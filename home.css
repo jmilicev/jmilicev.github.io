@@ -1,0 +1,35 @@
+body{
+    text-align: center;
+    background-color: white;
+}
+
+body h1{
+    color:black;
+}
+
+body h2{
+    font-size: large;
+}
+
+label{
+    font-size:medium;
+}
+
+input{
+    font-size: medium;
+}
+
+
+a{
+    color:black;
+    font-size: medium;
+}
+
+button{
+    min-width: 10ch;
+    min-height: 5ch;
+}
+
+div.direct-buttons{
+    text-align: center;
+}
