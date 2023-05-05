@@ -11,7 +11,7 @@ export default function AboutMeTab() {
   };
 
   return (
-    <div className="AboutMe">
+    <div id="aboutme" className="AboutMe">
 
 
     <button id="arrowbutton" onClick={scrollToAboutMeTab}>

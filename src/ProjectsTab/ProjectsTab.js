@@ -11,7 +11,7 @@ export default function ProjectsTab() {
   };
 
   return (
-    <div className="Projects">
+    <div id="projects" className="Projects">
       <button id="arrowbutton" onClick={scrollToProjectsTab}>
         ↓
       </button>

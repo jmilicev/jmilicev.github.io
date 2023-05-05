@@ -1,10 +1,37 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
 .LandingPage {
   text-align: center;
 }
 
+#lp-head{
+  margin: 0;
+  padding: 0;
+}
+#lp-text{
+  margin: 0;
+  padding: 0;
+}
+
+.landingPageText{
+  margin-top: 30px;
+}
+
+#headerbanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  width: 100%;
+  z-index: 1;
+}
 
 .header{
-  background-color: blue;
+  text-decoration: none;
+  background-color: rgb(0, 0, 0);
   border-radius: 10px;
   color: white;
   font-size: 16px;
@@ -12,6 +39,7 @@
   font-weight: bold;
   padding: 6px 24px;
   margin-right: 10px;
+  margin-top: 0px;
   border: none;
   outline: none;
   transition: background-color 0.3s ease;
@@ -22,7 +50,7 @@
 }
 
 #exploreButton {
-  background-color: blue;
+  background-color: rgb(0, 0, 0);
   border-radius: 10px;
   color: white;
   font-size: 16px;
@@ -38,7 +66,15 @@
   background-color: #2e6bff;
 }
 
-.checkflag {
+#dp {
+  pointer-events: auto;
+  padding-top: 20px;
+  width: 150px;
+  height: 150px;
+  animation: none; /* Add this line */
+}
+
+.resume {
   height: 5vmin;
   pointer-events: auto;
   width: 50px;
@@ -46,8 +82,8 @@
   animation: none; /* Add this line */
 }
 
-.checkflag:hover {
-  animation: logo-spin 5s linear infinite;
+.resume:hover {
+  filter: brightness(130%);
 }
 
 
@@ -77,6 +113,7 @@
 
 .blue-bike:hover, .green-bike:hover {
   animation-play-state: paused;
+  filter: brightness(130%);
 }
 
 
@@ -88,6 +125,9 @@
     animation: bike-icon-leftToRight 7s linear infinite;
 }
 
+.red-bike:hover{
+  filter: brightness(130%);
+}
 
 .green-bike {
   height: 5vmin;

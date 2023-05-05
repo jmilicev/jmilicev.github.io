@@ -12,7 +12,7 @@ export default function EducationTab() {
   };
 
   return (
-    <div className="Education">
+    <div id="education" className="Education">
 
 
     <button id="arrowbutton" onClick={scrollToEducationTab}>

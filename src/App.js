@@ -5,6 +5,7 @@ import ProjectsTab from './ProjectsTab/ProjectsTab';
 import Footer from './Footer/Footer';
 import EducationTab from './EducationTab/EducationTab';
 import AboutMeTab from './AboutMeTab/AboutMeTab';
+import ContactTab from './ContactTab/ContactTab';
 
 function App() {
   const [showInfosTab, setShowInfosTab] = useState(false);
@@ -25,6 +26,7 @@ function App() {
       {showInfosTab && <EducationTab />}
       {showInfosTab && <ExperienceTab />}
       {showInfosTab && <ProjectsTab />}
+      {showInfosTab && <ContactTab/>}
       <Footer />
     </>
   );

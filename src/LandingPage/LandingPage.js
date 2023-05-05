@@ -2,9 +2,11 @@ import React from 'react';
 import redbike from './red-bike.svg';
 import greenbike from './green-bike.svg';
 import bluebike from './blue-bike.svg';
+import resume from './resume.png';
 //import plane from './plane.svg';
 import cflag from './checkflag.svg';
 import './LandingPage.css';
+import dp from  './favicon.png';
 
 export default function LandingPage(props) {
   const handleExploreButtonClick = () => {
@@ -14,27 +16,28 @@ export default function LandingPage(props) {
   return (
     <div className="LandingPage">
       <header className="LP-header">
-
       <div id="headerbanner">
-      <button className="header">Projects</button>
-      <button className="header">Experience</button>
-      <button className="header">Education</button>
-      <button className="header">About Me</button>
-      <button className="header">Contact</button>
+      <a className="header" href="#projects">Projects</a>
+      <a className="header" href="#experience">Experience</a>
+      <a className="header" href="#education">Education</a>
+      <a className="header" href="#aboutme">About Me</a>
+      <a className="header" href="#foot">Contact</a>
       </div>
 
-        <h3>Jovan Milicev</h3>
+        <div className='landingPageText'>
+        <h3 id='lp-head'>Jovan Milicev</h3>
+        <p id="lp-text">Welcome to my webpage!</p>
+        <img src={dp} id="dp" alt="logo" />
+        </div>
 
-        <p>Welcome to my webpage!</p>
-        
 
         <a
-          className="checkflag"
-          href="https://github.com/jmilicev/jmilicev.github.io"
+          className="resume"
+          href={require("../share/jovan-milicev-resume.pdf")}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={cflag} className="checkflag" alt="logo" />
+          <img src={resume} className="resume" alt="logo" />
         </a>
         <a
           className="red-bike"

@@ -13,7 +13,7 @@ export default function ExperienceTab() {
   };
 
   return (
-    <div className="Experience">
+    <div id="experience" className="Experience">
 
 
     <button id="arrowbutton" onClick={scrollToExperienceTab}>
