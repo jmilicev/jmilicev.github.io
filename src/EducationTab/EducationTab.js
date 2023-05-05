@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import './EducationTab.css';
+import york from '../share/york.png'
 
 
 export default function EducationTab() {
@@ -20,11 +21,14 @@ export default function EducationTab() {
 
       <h2 ref={educationTabRef}>Education</h2>
 
-      <h3 >Honours, Bachelor of Arts, Computer Science | York University</h3>
+      <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
+      <h3 style={{ marginRight: "20px",marginTop: "23px" }}>HBA, Computer Science | York University</h3>
+      <img src={york} className="share" alt="logo" />
+</div>
       <ul>
       <li>GPA of 7.6/9.</li>
       <li>Graduating in October 2023 with only one class to go!</li>
-      <li>On track to graduate with first class standing, and as part of the Deans honour roll.</li>
+      <li>On track to graduate with first class standing, and part of the Deans honour roll.</li>
       <li>Data Structures and Algorithms, Computer Architecture, Advanced Object Oriented Programming, Distributed Systems, Database Management Systems, Computer Networking.</li>
       <li>My electives include Business, Economics, Finance and Astronomy.</li>
       </ul>

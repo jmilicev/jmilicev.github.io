@@ -4,6 +4,7 @@ import ExperienceTab from './ExperienceTab/ExperienceTab';
 import ProjectsTab from './ProjectsTab/ProjectsTab';
 import Footer from './Footer/Footer';
 import EducationTab from './EducationTab/EducationTab';
+import AboutMeTab from './AboutMeTab/AboutMeTab';
 
 function App() {
   const [showInfosTab, setShowInfosTab] = useState(false);
@@ -20,6 +21,7 @@ function App() {
   return (
     <>
       <LandingPage onExploreButtonClick={handleExploreButtonClick} />
+      {showInfosTab && <AboutMeTab />}
       {showInfosTab && <EducationTab />}
       {showInfosTab && <ExperienceTab />}
       {showInfosTab && <ProjectsTab />}

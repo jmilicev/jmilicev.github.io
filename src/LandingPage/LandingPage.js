@@ -23,8 +23,10 @@ export default function LandingPage(props) {
       <button className="header">Contact</button>
       </div>
 
-        <h1> Welcome aboard.</h1>
-        <p> You have landed on the website of Jovan Milicev.</p>
+        <h3>Jovan Milicev</h3>
+
+        <p>Welcome to my webpage!</p>
+        
 
         <a
           className="checkflag"

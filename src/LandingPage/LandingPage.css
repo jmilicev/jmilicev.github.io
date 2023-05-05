@@ -2,8 +2,8 @@
   text-align: center;
 }
 
+
 .header{
-  
   background-color: blue;
   border-radius: 10px;
   color: white;
@@ -105,7 +105,7 @@
 }
 
 .LP-header {
-  background-color: #1f2023;
+  background-color: #1b2129;
   min-height: 88vh;
   display: flex;
   flex-direction: column;
