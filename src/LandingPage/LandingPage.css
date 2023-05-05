@@ -1,0 +1,115 @@
+.LandingPage {
+  text-align: center;
+}
+
+
+#exploreButton {
+  background-color: blue;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+#exploreButton:hover {
+  background-color: #2e6bff;
+}
+
+.checkflag {
+  height: 5vmin;
+  pointer-events: auto;
+  width: 50px;
+  height: 50px;
+  animation: none; /* Add this line */
+}
+
+.checkflag:hover {
+  animation: logo-spin 5s linear infinite;
+}
+
+
+
+.blue-bike {
+  height: 5vmin;
+  pointer-events: auto;
+    width: 50px;
+    height: 50px;
+    animation: bike-icon-rightToLeft 15s linear infinite;
+}
+
+.blue-bike:hover, .green-bike:hover {
+  animation-play-state: paused;
+}
+
+
+.red-bike {
+  height: 5vmin;
+  pointer-events: auto;
+    width: 50px;
+    height: 50px;
+    animation: bike-icon-leftToRight 10s linear infinite;
+}
+
+
+.green-bike {
+  height: 5vmin;
+  pointer-events: auto;
+    width: 50px;
+    height: 50px;
+    animation: bike-icon-leftToRight 10s linear infinite;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-leftToRight infinite 5s linear;
+  }
+}
+
+.LP-header {
+  background-color: #1f2023;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+.App-link {
+  color: #198dda;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bike-icon-rightToLeft{
+  from {
+    transform: translateX(-1000%);
+  }
+  to {
+    transform: translateX(+1500%);
+  }
+}
+
+@keyframes bike-icon-leftToRight{
+  from {
+    transform: translateX(+1000%);
+  }
+  to {
+    transform: translateX(-1500%);
+  }
+}

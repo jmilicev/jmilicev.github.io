@@ -1,0 +1,10 @@
+#foot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .links-container img {
+    margin-right: 10px;
+  }
