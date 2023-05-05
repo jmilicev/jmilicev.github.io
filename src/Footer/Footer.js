@@ -5,10 +5,10 @@ import './Footer.css';
 
 export default function Footer() {
   return (
-    <div class="links">
+    <div className="links">
       <footer id="foot">
         <p> Feel free to follow me on my links below!</p>
-        <div class="links-container">
+        <div className="links-container">
           <a
             className="App-link links"
             href="https://www.linkedin.com/in/jovan-milicev/"

@@ -2,6 +2,24 @@
   text-align: center;
 }
 
+.header{
+  
+  background-color: blue;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  padding: 6px 24px;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.header:hover{
+  background-color: #2e6bff;
+}
 
 #exploreButton {
   background-color: blue;
@@ -33,6 +51,21 @@
 }
 
 
+.blue-bike{
+  height: 5vmin;
+  pointer-events: auto;
+    width: 50px;
+    height: 50px;
+    animation: bike-icon-rightToLeft 15s linear infinite;
+}
+
+.plane {
+  height: 5vmin;
+  pointer-events: auto;
+    width: 200px;
+    height: 200px;
+    animation: bike-icon-rightToLeft 40s linear infinite;
+}
 
 .blue-bike {
   height: 5vmin;
@@ -52,7 +85,7 @@
   pointer-events: auto;
     width: 50px;
     height: 50px;
-    animation: bike-icon-leftToRight 10s linear infinite;
+    animation: bike-icon-leftToRight 7s linear infinite;
 }
 
 
@@ -101,7 +134,7 @@
     transform: translateX(-1000%);
   }
   to {
-    transform: translateX(+1500%);
+    transform: translateX(+1000%);
   }
 }
 
@@ -110,6 +143,6 @@
     transform: translateX(+1000%);
   }
   to {
-    transform: translateX(-1500%);
+    transform: translateX(-1000%);
   }
 }
