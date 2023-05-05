@@ -1,22 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.a95d7c3d.css",
-    "main.js": "/static/js/main.3a0b6543.js",
+    "main.css": "/static/css/main.d6e5ca3f.css",
+    "main.js": "/static/js/main.3846a3e7.js",
     "static/js/787.a6cad6f6.chunk.js": "/static/js/787.a6cad6f6.chunk.js",
+    "static/media/jovan-milicev-resume.pdf": "/static/media/jovan-milicev-resume.4f2f608533c1d726c9dd.pdf",
+    "static/media/favicon.png": "/static/media/favicon.e9e2b3c35fba7259bc59.png",
     "static/media/checkflag.svg": "/static/media/checkflag.0c0d3a82a92f4b97b170a42b8f243193.svg",
     "static/media/bns.png": "/static/media/bns.35a8fb8f2ccc3bd41698.png",
+    "static/media/resume.png": "/static/media/resume.c186620b75ae570836cd.png",
     "static/media/red-bike.svg": "/static/media/red-bike.a25233d25bace4bab5cf083b293f8743.svg",
     "static/media/blue-bike.svg": "/static/media/blue-bike.55399e4807842028a04583ce8ec96b80.svg",
     "static/media/green-bike.svg": "/static/media/green-bike.53d3f40f4939f1ccfe14431c6465f633.svg",
     "static/media/github.svg": "/static/media/github.3b21c250a99986431958daaa9246a45a.svg",
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.98956d298e14a6384fdb39c42269f2f2.svg",
-    "main.a95d7c3d.css.map": "/static/css/main.a95d7c3d.css.map",
-    "main.3a0b6543.js.map": "/static/js/main.3a0b6543.js.map",
+    "main.d6e5ca3f.css.map": "/static/css/main.d6e5ca3f.css.map",
+    "main.3846a3e7.js.map": "/static/js/main.3846a3e7.js.map",
     "787.a6cad6f6.chunk.js.map": "/static/js/787.a6cad6f6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a95d7c3d.css",
-    "static/js/main.3a0b6543.js"
+    "static/css/main.d6e5ca3f.css",
+    "static/js/main.3846a3e7.js"
   ]
 }
