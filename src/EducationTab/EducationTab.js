@@ -12,14 +12,14 @@ export default function EducationTab() {
   };
 
   return (
-    <div id="education" className="Education">
+    <div className="Education">
 
 
     <button id="arrowbutton" onClick={scrollToEducationTab}>
             ↓
           </button>
 
-      <h2 ref={educationTabRef}>Education</h2>
+      <h2 id="education" ref={educationTabRef}>Education</h2>
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>HBA, Computer Science | York University</h3>

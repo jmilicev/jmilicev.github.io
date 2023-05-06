@@ -11,12 +11,12 @@ export default function ProjectsTab() {
   };
 
   return (
-    <div id="projects" className="Projects">
+    <div className="Projects">
       <button id="arrowbutton" onClick={scrollToProjectsTab}>
         ↓
       </button>
 
-      <h2 ref={projectsTabRef}>Projects</h2>
+      <h2 id="projects" ref={projectsTabRef}>Projects</h2>
 
       
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>

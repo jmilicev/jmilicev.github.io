@@ -3,15 +3,15 @@ html {
 }
 
 
+body {
+  overflow-x: hidden;
+}
+
 .LandingPage {
   text-align: center;
 }
 
-#lp-head{
-  margin: 0;
-  padding: 0;
-}
-#lp-text{
+#lp-head, #lp-text{
   margin: 0;
   padding: 0;
 }
@@ -45,8 +45,17 @@ html {
   transition: background-color 0.3s ease;
 }
 
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 8px 14px;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+}
+
 .header:hover{
   background-color: #2e6bff;
+  color: white;
 }
 
 #exploreButton {
@@ -86,62 +95,32 @@ html {
   filter: brightness(130%);
 }
 
+#bike{
+  height: 5vmin;
+  pointer-events: auto;
+  width: 50px;
+  height: 50px;
+}
+
 
 .blue-bike{
-  height: 5vmin;
-  pointer-events: auto;
-    width: 50px;
-    height: 50px;
-    animation: bike-icon-rightToLeft 15s linear infinite;
+  animation: moveRight 10s linear infinite;
 }
 
-.plane {
-  height: 5vmin;
-  pointer-events: auto;
-    width: 200px;
-    height: 200px;
-    animation: bike-icon-rightToLeft 40s linear infinite;
+.red-bike {
+    animation: moveLeft 7s linear infinite;
 }
 
-.blue-bike {
-  height: 5vmin;
-  pointer-events: auto;
-    width: 50px;
-    height: 50px;
-    animation: bike-icon-rightToLeft 15s linear infinite;
+.green-bike {
+    animation: moveLeft 9s linear infinite;
 }
 
 .blue-bike:hover, .green-bike:hover {
   animation-play-state: paused;
-  filter: brightness(130%);
 }
 
-
-.red-bike {
-  height: 5vmin;
-  pointer-events: auto;
-    width: 50px;
-    height: 50px;
-    animation: bike-icon-leftToRight 7s linear infinite;
-}
-
-.red-bike:hover{
-  filter: brightness(130%);
-}
-
-.green-bike {
-  height: 5vmin;
-  pointer-events: auto;
-    width: 50px;
-    height: 50px;
-    animation: bike-icon-leftToRight 10s linear infinite;
-}
-
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-leftToRight infinite 5s linear;
-  }
+#bike:hover{
+  filter: brightness(120%);
 }
 
 .LP-header {
@@ -169,20 +148,38 @@ html {
   }
 }
 
-@keyframes bike-icon-rightToLeft{
-  from {
-    transform: translateX(-1000%);
+@keyframes moveLeft{
+  0% {
+    transform: translateX(28vw);
   }
-  to {
-    transform: translateX(+1000%);
+  100% {
+    transform: translateX(-28vw);
   }
 }
 
-@keyframes bike-icon-leftToRight{
-  from {
-    transform: translateX(+1000%);
+@keyframes moveRight{
+  0% {
+    transform: translateX(-28vw);
   }
-  to {
-    transform: translateX(-1000%);
+  100% {
+    transform: translateX(28vw);
   }
+}
+
+.shake{
+  animation: shake 2s;
+}
+/* this was taken from w3 schools */
+@keyframes shake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-10px, 0) rotate(-5deg); }
+  20% { transform: translate(10px, 0) rotate(5deg); }
+  30% { transform: translate(-10px, 0) rotate(-5deg); }
+  40% { transform: translate(10px, 0) rotate(5deg); }
+  50% { transform: translate(-10px, 0) rotate(-5deg); }
+  60% { transform: translate(10px, 0) rotate(5deg); }
+  70% { transform: translate(-10px, 0) rotate(-5deg); }
+  80% { transform: translate(10px, 0) rotate(5deg); }
+  90% { transform: translate(-10px, 0) rotate(-5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
 }

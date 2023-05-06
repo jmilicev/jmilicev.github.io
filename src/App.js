@@ -27,6 +27,7 @@ function App() {
       {showInfosTab && <ExperienceTab />}
       {showInfosTab && <ProjectsTab />}
       {showInfosTab && <ContactTab/>}
+      {showInfosTab && <hr></hr>}
       <Footer />
     </>
   );

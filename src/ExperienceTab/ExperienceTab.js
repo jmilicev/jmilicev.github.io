@@ -13,14 +13,14 @@ export default function ExperienceTab() {
   };
 
   return (
-    <div id="experience" className="Experience">
+    <div className="Experience">
 
 
     <button id="arrowbutton" onClick={scrollToExperienceTab}>
             ↓
           </button>
 
-      <h2 ref={experienceTabRef}>Experience</h2>
+      <h2  id="experience" ref={experienceTabRef}>Experience</h2>
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Undergraduate Teaching Assistant | York University</h3>
