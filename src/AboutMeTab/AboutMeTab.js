@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import './AboutMe.css';
+import '../share/generic.css';
 
 
 export default function AboutMeTab() {

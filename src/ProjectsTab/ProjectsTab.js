@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import './ProjectsTab.css';
+import '../share/generic.css';
 import share from './share.png';
 import york from '../share/york.png';
 

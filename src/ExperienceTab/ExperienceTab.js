@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import './ExperienceTab.css';
+import '../share/generic.css';
 import york from '../share/york.png';
 import bns from './bns.png';
 
