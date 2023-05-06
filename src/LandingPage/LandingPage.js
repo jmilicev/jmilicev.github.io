@@ -6,16 +6,14 @@ import resume from './lp-src/resume.png';
 import './LandingPage.css';
 import dp from  './lp-src/favicon.png';
 
-
 /*
-
-    when pg page is finished.
-    <button
-          className="resume"
+        <button
+          className="photopage"
+          onClick={handleExploreButtonClick}
         >
-          <img src={resume} className="resume" alt="logo" />
+          <img src={resume} className="photopage" alt="logo" />
         </button>
-*/
+      */
 
 export default function LandingPage(props) {
   const handleExploreButtonClick = () => {
@@ -29,18 +27,17 @@ export default function LandingPage(props) {
 
       const ratio = viewportHeight/viewportWidth;
 
-      if(ratio>1){
-        // likely mobile device
-        // pan screen down slightly to present arrow
-        window.scrollBy(0, 65);
-      }else{
-        //for now just have the same behaviour
-        window.scrollBy(0, 65);
-      }
-
       var arrow = document.getElementById("arrowbutton");
       if(arrow != null){
         arrow.classList.add('shake');
+        if(ratio>1){
+          // likely mobile device
+          // pan screen down slightly to present arrow
+          window.scrollBy(0, 65);
+        }else{
+          //for now just have the same behaviour
+          window.scrollBy(0, 65);
+        }
       }
     }, 250); 
 
@@ -87,6 +84,9 @@ export default function LandingPage(props) {
         <p id="lp-text">Welcome to my webpage!</p>
         <img src={dp} id="dp" alt="logo" />
         </div>
+
+  
+
 
         <a
           className="resume"
