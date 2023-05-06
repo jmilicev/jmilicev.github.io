@@ -1,10 +1,10 @@
 import React from 'react';
-import redbike from './red-bike.svg';
-import greenbike from './green-bike.svg';
-import bluebike from './blue-bike.svg';
-import resume from './resume.png';
+import redbike from './lp-src/red-bike.svg';
+import greenbike from './lp-src/green-bike.svg';
+import bluebike from './lp-src/blue-bike.svg';
+import resume from './lp-src/resume.png';
 import './LandingPage.css';
-import dp from  './favicon.png';
+import dp from  './lp-src/favicon.png';
 
 
 export default function LandingPage(props) {
@@ -40,13 +40,21 @@ export default function LandingPage(props) {
   return (
     <div className="LandingPage">
       <header className="LP-header">
+
       <div id="headerbanner">
       <button className='header' onClick={() => handleBannerClick("projects")}>Projects</button>
       <button className='header' onClick={() => handleBannerClick("experience")}>Experience</button>
       <button className='header' onClick={() => handleBannerClick("education")}>Education</button>
       <button className='header' onClick={() => handleBannerClick("aboutme")}>About me</button>
       <button className='header' onClick={() => handleBannerClick("contact")}>Contact</button>
+      <a  href={require("../share/jovan-milicev-resume.pdf")}
+          target="_blank"
+          rel="noopener noreferrer" 
+          id = "resumeheader"
+          className='header'>Resume</a>
       </div>
+
+
 
         <div className='landingPageText'>
         <h3 id='lp-head'>Jovan Milicev</h3>

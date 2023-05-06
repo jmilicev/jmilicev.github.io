@@ -24,7 +24,7 @@ export default function ExperienceTab() {
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Undergraduate Teaching Assistant | York University</h3>
-      <img src={york} className="share" alt="logo" />
+      <a href="https://www.yorku.ca"><img src={york} className="share" alt="logo" /></a>
 </div>
       <ul>
         <li>Teaching assistant for EECS2021 (Computer Organization). Taught basics of assembly language programming in RISC-V and fundamentals of computer architecture in iVerilog.</li>
@@ -35,7 +35,7 @@ export default function ExperienceTab() {
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Teller | Scotiabank</h3>
-      <img src={bns} className="share" alt="logo" />
+      <a href="https://www.scotiabank.com/ca/en/personal.html"><img src={bns} className="share" alt="logo" /></a>
       </div>
       <ul>
       <li>Maximized customer satisfaction by helping clients with their banking transactions with a high attention to detail; daily functions included creating bank drafts, mortgage payouts, loan payments, etc.</li>

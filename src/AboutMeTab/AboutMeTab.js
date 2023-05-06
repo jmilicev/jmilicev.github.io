@@ -13,10 +13,7 @@ export default function AboutMeTab() {
   return (
     <div className="AboutMe">
 
-
-    <button id="arrowbutton" onClick={scrollToAboutMeTab}>
-            ↓
-          </button>
+    <button id="arrowbutton" onClick={scrollToAboutMeTab}>↓</button>
 
       <h2 id="aboutme" ref={aboutMeTabRef}>My Story</h2>
 

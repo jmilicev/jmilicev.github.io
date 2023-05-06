@@ -32,13 +32,14 @@ export default function ProjectsTab() {
 </div>
       <ul>
         <li>This very website, including all HTML and CSS was created from scratch using React.js.</li>
-        <li>Configured deployment on Github Pages with link to custom domain. (coming soon!)</li>
-        <li>There are many hidden easter eggs on the website if you can find them all!</li>
+        <li>Utilized GitHub Pages to host and deploy the website, ensuring seamless access and efficient delivery to user </li>
+        <li>Continuously updated and maintained the website, adding new projects and improving functionality to enhance
+user experience and showcase new skills and experience.</li>
       </ul>
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Distributed Go Chat Website | Go, JS, Kubernetes</h3>
-      <img src={york} className="share" alt="logo" />
+      <a href="https://www.yorku.ca"><img src={york} className="share" alt="logo" /></a>
 </div>
       <ul>
         <li>Developed a chat-app with golang backend and javascript frontend using websockets.</li>
@@ -48,7 +49,7 @@ export default function ProjectsTab() {
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Novel Programming Language | Java, ANTLR4</h3>
-      <img src={york} className="share" alt="logo" />
+      <a href="https://www.yorku.ca"><img src={york} className="share" alt="logo" /></a>
 </div>
       <ul>
         <li>Developed a novel programming language using the ANTLR4 parser and Java.</li>

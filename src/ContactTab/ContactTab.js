@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import './ContactTab.css';
+import '../share/generic.css';
 
 
 export default function ContactTab() {
@@ -11,7 +11,7 @@ export default function ContactTab() {
   };
 
   return (
-    <div id="contact" className="contact">
+    <div id="contact" className="Contact">
 
 
     <button id="arrowbutton" onClick={scrollTocontactTab}>
@@ -19,10 +19,9 @@ export default function ContactTab() {
           </button>
 
     <h2 ref={contactTabRef}>Contact Me!</h2>
+    
 
     <a id="email" href="mailto:contact@jovanmilicev.com"> You can reach me at any time at&nbsp;<strong>contact@jovanmilicev.com</strong></a>
-
-
     </div>
 
 

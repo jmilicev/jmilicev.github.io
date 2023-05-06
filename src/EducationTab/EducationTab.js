@@ -23,8 +23,8 @@ export default function EducationTab() {
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>HBA, Computer Science | York University</h3>
-      <img src={york} className="share" alt="logo" />
-</div>
+      <a href="https://www.yorku.ca"><img src={york} className="share" alt="logo" /></a>
+      </div>
       <ul>
       <li>GPA of 7.6/9.</li>
       <li>Graduating in October 2023 with only one class to go!</li>

@@ -1,8 +1,9 @@
-.Projects, .Education, .Experience, .AboutMe {
+.Projects, .Education, .Experience, .AboutMe, .Contact{
     margin: auto;
     max-width: 800px;
     padding: 20px;
   }
+  
 .share{
   width: 40px;
   height: 40px;
@@ -35,7 +36,7 @@
   #arrowbutton:hover{
     background-color: #1584d3;
   }
-  
+
   ul {
     margin-bottom: 30px;
   }
@@ -55,13 +56,44 @@
     vertical-align: middle;
   }
   
+  #resumeheader{
+    background-color: #0059ff !important;
+  }
+  #resumeheader:hover{
+    background-color: #ffffff !important;
+    color: black;
+  }
+
   a {
     color: #000000;
     text-decoration: underline;
   }
-  
   a:hover {
     color: #0059ff;
   }
-  
+
+  #foot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .links-container img {
+    margin-right: 10px;
+  }
+
+  #email {
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .Contact{
+    text-align: center;
+  }
   

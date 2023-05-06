@@ -1,7 +1,7 @@
 import React from 'react'
 import github from '../share/github.svg';
 import linkedin from '../share/linkedin.svg';
-import './Footer.css';
+import '../share/generic.css';
 
 export default function Footer() {
   return (
