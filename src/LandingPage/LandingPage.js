@@ -7,12 +7,37 @@ import './LandingPage.css';
 import dp from  './lp-src/favicon.png';
 
 
+/*
+
+    when pg page is finished.
+    <button
+          className="resume"
+        >
+          <img src={resume} className="resume" alt="logo" />
+        </button>
+*/
+
 export default function LandingPage(props) {
   const handleExploreButtonClick = () => {
     props.onExploreButtonClick();
 
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
 
     setTimeout(function(){
+
+      const ratio = viewportHeight/viewportWidth;
+
+      if(ratio>1){
+        // likely mobile device
+        // pan screen down slightly to present arrow
+        window.scrollBy(0, 65);
+      }else{
+        //for now just have the same behaviour
+        window.scrollBy(0, 65);
+      }
+
       var arrow = document.getElementById("arrowbutton");
       if(arrow != null){
         arrow.classList.add('shake');
@@ -37,6 +62,7 @@ export default function LandingPage(props) {
 
   };
 
+  
   return (
     <div className="LandingPage">
       <header className="LP-header">
@@ -70,6 +96,7 @@ export default function LandingPage(props) {
         >
           <img src={resume} className="resume" alt="logo" />
         </a>
+
         <a
           className="red-bike"
           href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
