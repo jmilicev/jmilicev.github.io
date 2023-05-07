@@ -2,17 +2,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.photopage{
-  background-color: #1b2129;
-  border: none;
-  margin-right: 12px;
-  height: 5vmin;
-  pointer-events: auto;
-  width: 50px;
-  height: 50px;
-  animation: none;
-}
-
 .photopage:hover{
   filter: brightness(120%);
 }
@@ -80,6 +69,10 @@ body {
     margin-top: 15px !important;
   }
 
+  .LP-header{
+    margin-top: 20px;
+  }
+
 }
 
 @media screen and (max-width: 350px) {
@@ -110,6 +103,22 @@ body {
 .header:hover{
   background-color: #2e6bff;
   color: white;
+}
+
+#photobutton{
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+#photobutton:hover{
+  background-color: red;
 }
 
 #exploreButton {
@@ -179,7 +188,7 @@ body {
 
 .LP-header {
   background-color: #1b2129;
-  min-height: 88vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;

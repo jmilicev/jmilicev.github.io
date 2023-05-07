@@ -2,17 +2,18 @@ import React from 'react';
 import redbike from './lp-src/red-bike.svg';
 import greenbike from './lp-src/green-bike.svg';
 import bluebike from './lp-src/blue-bike.svg';
-import resume from './lp-src/resume.png';
 import './LandingPage.css';
 import dp from  './lp-src/favicon.png';
 
 /*
-        <button
-          className="photopage"
-          onClick={handleExploreButtonClick}
+        <a
+          className="resume"
+          href={require("../share/jovan-milicev-resume.pdf")}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <img src={resume} className="photopage" alt="logo" />
-        </button>
+          <img src={resume} className="resume" alt="logo" />
+        </a>
       */
 
 export default function LandingPage(props) {
@@ -41,6 +42,10 @@ export default function LandingPage(props) {
       }
     }, 250); 
 
+  };
+
+  const handlePhotographyButtonClick = () => {
+    props.onPhotographyButtonClick();
   };
 
   const handleBannerClick = (id) => {
@@ -86,16 +91,13 @@ export default function LandingPage(props) {
         </div>
 
   
-
-
-        <a
-          className="resume"
-          href={require("../share/jovan-milicev-resume.pdf")}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          id = 'photobutton'
+          onClick={handlePhotographyButtonClick}
         >
-          <img src={resume} className="resume" alt="logo" />
-        </a>
+          Photography
+        </button>
+
 
         <a
           className="red-bike"

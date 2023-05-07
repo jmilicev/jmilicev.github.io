@@ -20,12 +20,14 @@ export default function ExperienceTab() {
             ↓
           </button>
 
-      <h2  id="experience" ref={experienceTabRef}>Experience</h2>
+    <div id="experience">
+
+      <h2 ref={experienceTabRef}>Experience</h2>
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Undergraduate Teaching Assistant | York University</h3>
       <a href="https://www.yorku.ca"><img src={york} className="share" alt="logo" /></a>
-</div>
+      </div>
       <ul>
         <li>Teaching assistant for EECS2021 (Computer Organization). Taught basics of assembly language programming in RISC-V and fundamentals of computer architecture in iVerilog.</li>
         <li>Facilitated a lab with over 50 students which included solving complex problems, grading assignments, etc. which resulted in an overall increase in the class average.</li>
@@ -44,7 +46,7 @@ export default function ExperienceTab() {
       <li>Scheduled client appointments for a team of 10+ professionals to accommodate the needs of the business and the clients.</li>
       </ul>
 
-
+      </div>
 
     </div>
   )

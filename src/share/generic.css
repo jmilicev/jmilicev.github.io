@@ -1,9 +1,25 @@
 .Projects, .Education, .Experience, .AboutMe, .Contact{
-    margin: auto;
-    max-width: 800px;
-    padding: 20px;
+    background-color: #ffffff;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+
   }
-  
+
+.Contact{
+  max-width: none;
+}
+
+#projects, #education, #experience, #aboutme{
+    max-width: 800px !important;
+    margin: auto !important;
+    padding: 20px !important;
+}
+
+.links{
+  background-color: white;
+  margin: 0;
+}
 .share{
   width: 40px;
   height: 40px;
@@ -77,7 +93,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 20px;
+    padding-bottom: 18px;
+    
   }
 
   .links-container img {

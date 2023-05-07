@@ -1,0 +1,49 @@
+.photo-lp-main{
+    background-color: #1b2129;
+    text-align: center;
+}
+
+#desctext{
+    color: white;
+    text-align: center;
+    margin-top: 0;
+}
+
+.homebutton {
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+.homebutton:hover {
+    background-color: #2e6bff;
+  }
+
+body {
+    margin: 0;
+    background-color: #1b2129;
+}
+
+#photoheader{
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#indphoto{
+    height: 50vh; /* set the height to be 100% of the viewport height */
+    width: 50vw; /* set the width to be 100% of the viewport width */
+    object-fit: scale-down; /* crop the image to fit the container */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+

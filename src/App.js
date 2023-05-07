@@ -6,10 +6,18 @@ import Footer from './Footer/Footer';
 import EducationTab from './EducationTab/EducationTab';
 import AboutMeTab from './AboutMeTab/AboutMeTab';
 import ContactTab from './ContactTab/ContactTab';
+import PhotoLandingPage from './PhotoLandingPage/PhotoLandingPage';
 
 function App() {
   const [showInfosTab, setShowInfosTab] = useState(false);
   const infosTabRef = useRef(null);
+
+  const [showPhotoPage, setShowPhotoPage] = useState(false);
+  //const photoPageRef = useRef(null);
+
+  const handlePhotographyButtonClick = () => {
+    setShowPhotoPage(!showPhotoPage);
+  };
 
   const handleExploreButtonClick = () => {
     setShowInfosTab(!showInfosTab);
@@ -21,12 +29,23 @@ function App() {
 
   return (
     <>
-      <LandingPage onExploreButtonClick={handleExploreButtonClick} />
-      {showInfosTab && <AboutMeTab />}
-      {showInfosTab && <EducationTab />}
-      {showInfosTab && <ExperienceTab />}
-      {showInfosTab && <ProjectsTab />}
-      {showInfosTab && <ContactTab/>}
+      {/* photography */}
+      {showPhotoPage &&
+       <PhotoLandingPage onPhotographyButtonClick={handlePhotographyButtonClick}/>}
+
+
+      {/* resume portion of the webpage */}
+      {!showPhotoPage &&
+      <LandingPage 
+      onPhotographyButtonClick={handlePhotographyButtonClick}
+      onExploreButtonClick={handleExploreButtonClick} />
+      }
+
+      {showInfosTab && !showPhotoPage && <AboutMeTab />}
+      {showInfosTab && !showPhotoPage && <EducationTab />}
+      {showInfosTab && !showPhotoPage && <ExperienceTab />}
+      {showInfosTab && !showPhotoPage && <ProjectsTab />}
+      {showInfosTab && !showPhotoPage && <ContactTab/>}
       <Footer />
     </>
   );

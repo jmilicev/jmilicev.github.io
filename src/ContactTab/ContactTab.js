@@ -22,6 +22,7 @@ export default function ContactTab() {
     
 
     <a id="email" href="mailto:contact@jovanmilicev.com"> You can reach me at any time at&nbsp;<strong>contact@jovanmilicev.com</strong></a>
+    
     </div>
 
 

@@ -15,8 +15,10 @@ export default function ProjectsTab() {
       <button id="arrowbutton" onClick={scrollToProjectsTab}>
         ↓
       </button>
+      
 
-      <h2 id="projects" ref={projectsTabRef}>Projects</h2>
+      <div id="projects">
+      <h2 ref={projectsTabRef}>Projects</h2>
 
       
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
@@ -109,6 +111,7 @@ user experience and showcase new skills and experience.</li>
         <li>Implements encryption-based login system to authenticate users and personalize accordingly.</li>
         <li>Contains simple games coded in JavaScript such as Tic Tac Toe.</li>
       </ul>
+    </div>
     </div>
   );
 }

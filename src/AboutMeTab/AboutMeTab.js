@@ -15,10 +15,9 @@ export default function AboutMeTab() {
 
     <button id="arrowbutton" onClick={scrollToAboutMeTab}>↓</button>
 
-      <h2 id="aboutme" ref={aboutMeTabRef}>My Story</h2>
-
+    <div id="aboutme">
+      <h2 ref={aboutMeTabRef}>My Story</h2>
       <p>
-
       Welcome to my personal website! I have created this page as a central hub
       to contain all of my projects, job experience, and anything else related
       to my career and personal life that I may see fit. 
@@ -47,7 +46,7 @@ export default function AboutMeTab() {
       Thanks for visiting, and feel free to look around!
       </p>
       
-
+      </div>
 
     </div>
   )
