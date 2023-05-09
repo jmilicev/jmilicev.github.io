@@ -2,7 +2,7 @@
   
   /* cleared */
 
-  .Projects, .Education, .Experience, .AboutMe, .Contact{
+.Projects, .Education, .Experience, .AboutMe, .Contact{
     background-color: #ffffff;
     width: 100%;
     padding-bottom: 20px;
@@ -49,10 +49,10 @@
     background-color: #1584d3;
   }
   
-  
   #resumeheader{
     background-color: #0059ff;
   }
+
   #resumeheader:hover{
     background-color: #ffffff;
     color: black;
@@ -66,6 +66,26 @@
     color: #0059ff;
   }
 
+  .Contact{
+    text-align: center;
+  }
+
+  #topButton{
+      font-size: calc(8px + 1vmin);
+      padding: 6px 12px;
+      margin-top: 20px;
+      border: none;
+      transition: background-color 0.3s ease;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: bold;
+      background-color: rgb(0, 0, 0);
+      border-radius: 10px;
+      color: white;
+  }
+
+  #topButton:hover{
+    background-color: #0059ff;
+  }
 
   #foot {
     display: flex;

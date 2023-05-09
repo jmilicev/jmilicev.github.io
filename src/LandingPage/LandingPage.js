@@ -84,7 +84,7 @@ export default function LandingPage(props) {
 
 
 
-        <div className='landingPageText'>
+        <div id ="home" className='landingPageText'>
         <h3 id='lp-head'>Jovan Milicev</h3>
         <p id="lp-text">Welcome to my webpage!</p>
         <img src={dp} id="dp" alt="logo" />
