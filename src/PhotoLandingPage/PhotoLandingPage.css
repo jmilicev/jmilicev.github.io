@@ -27,12 +27,7 @@
 .homebutton:hover {
     background-color: #2e6bff;
   }
-
-body {
-    margin: 0;
-    background-color: #1b2129;
-}
-
+  
 #photoheader{
     color: white;
     margin-top: 0;
