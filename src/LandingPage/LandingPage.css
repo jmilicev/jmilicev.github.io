@@ -22,7 +22,7 @@ body {
 }
 
 .landingPageText{
-  margin-top: 35px;
+  margin-top: 60px;
 }
 
 #headerbanner {
@@ -110,7 +110,6 @@ body {
   flex-direction: column;
   background-color: #18191b;
 }
-
 
 @keyframes logo-spin {
   from {
