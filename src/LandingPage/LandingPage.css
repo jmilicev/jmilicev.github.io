@@ -101,7 +101,7 @@ body {
 }
 
 .LP-header {
-  min-height: 88vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;

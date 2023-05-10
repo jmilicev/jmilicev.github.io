@@ -34,7 +34,7 @@ export default function ProjectsTab() {
 </div>
       <ul>
         <li>This very website, including all HTML and CSS was created from scratch using React.js.</li>
-        <li>Utilized GitHub Pages to host and deploy the website, ensuring seamless access and efficient delivery to user </li>
+        <li>Utilized GitHub Pages to host and deploy the website, ensuring seamless access and efficient delivery to user. </li>
         <li>Continuously updated and maintained the website, adding new projects and improving functionality to enhance
 user experience and showcase new skills and experience.</li>
       </ul>

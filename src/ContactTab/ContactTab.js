@@ -11,7 +11,7 @@ export default function ContactTab() {
   };
 
   const scrollToTop= () => {
-    contactTabRef.current.scrollIntoView({ behavior: 'smooth' });window.scrollBy(0, 65);
+    contactTabRef.current.scrollIntoView({ behavior: 'smooth' });
     window.scrollBy(0, -100000);
   };
 

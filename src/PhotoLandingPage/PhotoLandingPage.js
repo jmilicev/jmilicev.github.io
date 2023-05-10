@@ -22,17 +22,31 @@ export default function PhotoLandingPage(props) {
     props.onPhotographyButtonClick();
   };
 
+  const scrollToTop= () => {
+    window.scrollBy(0, -100000);
+  };
+
   return (
     <div className='photo-lp-main'>
+
+        <div className='photo-header'>
         <h2 id="photoheader">Photography</h2>
         <p id="desctext">A look into some of my favourite photos</p>
+        <button
+          className="tophomebutton"
+          onClick={handlePhotographyButtonClick}
+        >
+          Home
+        </button>
+
+        <br></br>
 
         <a
         href="https://www.instagram.com/pg.jovan/"
         >
         <img id = "ig-logo" src={ig} alt="ig logo"></img>
         </a>
-        
+        </div>
         
         <div className='gallery'>
 
@@ -100,8 +114,13 @@ export default function PhotoLandingPage(props) {
           className="homebutton"
           onClick={handlePhotographyButtonClick}
         >
-          Return Home
+          Return To Home
         </button>
+
+        <button className="homebutton" onClick={scrollToTop}>
+          Return to Top
+        </button>
+
     </div>
   )
 }

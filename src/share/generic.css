@@ -88,7 +88,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 1vh;
+    min-height: 10vh;
     background-color: white;
     
   }

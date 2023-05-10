@@ -4,6 +4,10 @@
 
   }
 
+  .photo-header{
+    text-align: center;
+  }
+
   #ig-logo{
     width: 40px;
     height: 40px;
@@ -16,14 +20,22 @@
     margin-top: 0;
   }
   
-  .homebutton {
+  .tophomebutton{
+    padding: 12px 40px !important;
+  }
+
+  .homebutton{
+    margin-right: 20px;
+  }
+
+  .homebutton, .tophomebutton {
     background-color: rgb(0, 0, 0);
     border-radius: 10px;
     color: white;
     font-size: 16px;
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
-    padding: 12px 24px;
+    padding: 8px 24px;
     border: none;
     outline: none;
     transition: background-color 0.3s ease;
@@ -31,10 +43,10 @@
     margin-bottom: 20px;
   }
   
-  .homebutton:hover {
+  .tophomebutton:hover, .homebutton:hover {
     background-color: #2e6bff;
   }
-  
+
   #photoheader {
     color: white;
     margin-top: 0;
