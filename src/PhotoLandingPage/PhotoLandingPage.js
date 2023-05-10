@@ -1,5 +1,8 @@
 import React from 'react'
 import './PhotoLandingPage.css';
+
+import ig from './photos/instagram.png'
+
 import img1 from './photos/image1.png'
 import img2 from './photos/image2.png'
 import img3 from './photos/image3.png'
@@ -23,6 +26,13 @@ export default function PhotoLandingPage(props) {
     <div className='photo-lp-main'>
         <h2 id="photoheader">Photography</h2>
         <p id="desctext">A look into some of my favourite photos</p>
+
+        <a
+        href="https://www.instagram.com/pg.jovan/"
+        >
+        <img id = "ig-logo" src={ig} alt="ig logo"></img>
+        </a>
+        
         
         <div className='gallery'>
 
@@ -31,6 +41,11 @@ export default function PhotoLandingPage(props) {
           <img alt="pg.jovan" src={img1} />
           <p className="captions">Settled Water, Vatican City | Shot on Canon M50</p>
         </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img8} />
+          <p className="captions">Misty Harbour, Etobicoke |  Shot on Canon M50</p>
+        </div>
+
         <div className='image-container'>
           <img alt="pg.jovan" src={img2} />
           <p className="captions">Wonder of the World, Niagara Falls | Shot on DJI Mini 2</p>
@@ -43,37 +58,37 @@ export default function PhotoLandingPage(props) {
           <img alt="pg.jovan" src={img4} />
           <p className="captions"> Rocky Penninsula, Oakville | Shot on DJI Mini 2</p>
         </div>
+
         <div className='image-container'>
           <img alt="pg.jovan" src={img5} />
           <p className="captions">Twisty Roads, Burlington Skyway | Shot on DJI Mini 2</p>
         </div>
-        <div className='image-container'>
-          <img alt="pg.jovan" src={img6} />
-          <p className="captions">S.S. RidgeTown, Port Credit | Shot on DJI Mavic PRO</p>
-        </div>
+
         <div className='image-container'>
           <img alt="pg.jovan" src={img7} />
           <p className="captions">Lonely Boat, Oakville | Shot on DJI Mini 20</p>
         </div>
+
         <div className='image-container'>
-          <img alt="pg.jovan" src={img8} />
-          <p className="captions">Vatican City, Shot on Canon M50</p>
+          <img alt="pg.jovan" src={img6} />
+          <p className="captions">S.S. RidgeTown, Port Credit | Shot on DJI Mavic PRO</p>
         </div>
+
         <div className='image-container'>
           <img alt="pg.jovan" src={img9} />
-          <p className="captions">Vatican City, Shot on Canon M50</p>
+          <p className="captions">Quiet Dock, Orillia |  Shot on Canon M50</p>
         </div>
         <div className='image-container'>
           <img alt="pg.jovan" src={img10} />
-          <p className="captions">Vatican City, Shot on Canon M50</p>
+          <p className="captions">Self Portrait, Kitchener |  Shot on Canon M50</p>
         </div>
         <div className='image-container'>
           <img alt="pg.jovan" src={img11} />
-          <p className="captions">Vatican City, Shot on Canon M50</p>
+          <p className="captions">Christmas Market, Toronto | Shot on Canon M50</p>
         </div>
         <div className='image-container'>
           <img alt="pg.jovan" src={img12} />
-          <p className="captions">Vatican City, Shot on Canon M50</p>
+          <p className="captions">Railroads, Mississauga | Shot on Canon M50</p>
         </div>
         
       </div>
