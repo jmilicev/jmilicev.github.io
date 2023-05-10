@@ -70,10 +70,10 @@ export default function LandingPage(props) {
       <header className="LP-header">
 
       <div id="headerbanner">
-      <button id="bannerbutton" className='header' onClick={() => handleBannerClick("projects")}>Projects</button>
-      <button id="bannerbutton" className='header' onClick={() => handleBannerClick("experience")}>Experience</button>
-      <button id="bannerbutton" className='header' onClick={() => handleBannerClick("education")}>Education</button>
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("aboutme")}>About me</button>
+      <button id="bannerbutton" className='header' onClick={() => handleBannerClick("education")}>Education</button>
+      <button id="bannerbutton" className='header' onClick={() => handleBannerClick("experience")}>Experience</button>
+      <button id="bannerbutton" className='header' onClick={() => handleBannerClick("projects")}>Projects</button>
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("contact")}>Contact</button>
       <a  href={require("../share/jovan-milicev-resume.pdf")}
           target="_blank"

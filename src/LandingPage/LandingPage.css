@@ -1,6 +1,4 @@
 /* cleared */
-
-
 html {
   scroll-behavior: smooth;
 }
@@ -11,7 +9,7 @@ html {
 
 body {
   overflow-x: hidden;
-  background-color: #1b2129;
+  background-color: #18191b;
 }
 
 .LandingPage {
@@ -21,6 +19,10 @@ body {
 #lp-head, #lp-text{
   margin: 0;
   padding: 0;
+}
+
+.landingPageText{
+  margin-top: 35px;
 }
 
 #headerbanner {
@@ -94,12 +96,11 @@ body {
 #bike{
   height: 5vmin;
   pointer-events: auto;
-  width: 5vh;
-  height: 5vh;
+  width: 7hh;
+  height: 7vh;
 }
 
 .LP-header {
-  background-color: #1b2129;
   min-height: 88vh;
   display: flex;
   align-items: center;
@@ -107,6 +108,7 @@ body {
   font-size: calc(10px + 2vmin);
   color: white;
   flex-direction: column;
+  background-color: #18191b;
 }
 
 

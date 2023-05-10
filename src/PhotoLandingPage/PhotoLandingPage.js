@@ -25,18 +25,60 @@ export default function PhotoLandingPage(props) {
         <p id="desctext">A look into some of my favourite photos</p>
         
         <div className='gallery'>
-        <img id ="indphoto"  alt = "pg.jovan" src={img1}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img2}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img3}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img4}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img5}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img6}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img7}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img8}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img9}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img10}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img11}></img>
-        <img id ="indphoto"  alt = "pg.jovan" src={img12}></img>
+
+        <div className='gallery'>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img1} />
+          <p className="captions">Settled Water, Vatican City | Shot on Canon M50</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img2} />
+          <p className="captions">Wonder of the World, Niagara Falls | Shot on DJI Mini 2</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img3} />
+          <p className="captions">Freedom Bridge, Niagara Falls | Shot on DJI Mini 2</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img4} />
+          <p className="captions"> Rocky Penninsula, Oakville | Shot on DJI Mini 2</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img5} />
+          <p className="captions">Twisty Roads, Burlington Skyway | Shot on DJI Mini 2</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img6} />
+          <p className="captions">S.S. RidgeTown, Port Credit | Shot on DJI Mavic PRO</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img7} />
+          <p className="captions">Lonely Boat, Oakville | Shot on DJI Mini 20</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img8} />
+          <p className="captions">Vatican City, Shot on Canon M50</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img9} />
+          <p className="captions">Vatican City, Shot on Canon M50</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img10} />
+          <p className="captions">Vatican City, Shot on Canon M50</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img11} />
+          <p className="captions">Vatican City, Shot on Canon M50</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img12} />
+          <p className="captions">Vatican City, Shot on Canon M50</p>
+        </div>
+        
+      </div>
+
+
         </div>
 
         <button
