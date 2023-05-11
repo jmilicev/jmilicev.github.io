@@ -65,7 +65,7 @@ export default function PhotoLandingPage(props) {
 
         <div className='image-container'>
           <img alt="pg.jovan" src={img2} />
-          <p className="captions">Wonder of the World, Niagara Falls | Shot on DJI Mini 2</p>
+          <p className="captions">World Wonder, Niagara Falls | Shot on DJI Mini 2</p>
         </div>
         <div className='image-container'>
           <img alt="pg.jovan" src={img3} />
