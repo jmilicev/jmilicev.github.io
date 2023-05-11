@@ -37,9 +37,25 @@
     color: #ffffff;
     border: none;
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 25px;
+
+
+    /* 
+    dont even get me started !
+    this is a fix to a terrible css bug 
+    that caused misaligned arrows on mobile
+
+    you cannot increase the font-size because
+    it causes the arrow to be misaligned on
+    some mobile devices, this zoom trick
+    fixes the allignment issue
+    */
+
+    font-family: sans-serif;
+    width: 35px;
+    height: 35px;
+    zoom: 1.5;
+
+
   }
 
   #arrowbutton:hover{
