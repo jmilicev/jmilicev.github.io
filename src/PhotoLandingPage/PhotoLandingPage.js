@@ -15,6 +15,8 @@ import img9 from './photos/image9.png'
 import img10 from './photos/image10.png'
 import img11 from './photos/image11.png'
 import img12 from './photos/image12.png'
+import img13 from './photos/image13.png'
+import img14 from './photos/image14.png'
 
 export default function PhotoLandingPage(props) {
 
@@ -29,17 +31,18 @@ export default function PhotoLandingPage(props) {
   return (
     <div className='photo-lp-main'>
 
-        <div className='photo-header'>
-        <h2 id="photoheader">Photography</h2>
-        <p id="desctext">A look into some of my favourite photos</p>
-        <button
+      <button
           className="tophomebutton"
           onClick={handlePhotographyButtonClick}
         >
           Home
         </button>
 
-        <br></br>
+        <div className='photo-header'>
+        <h2 id="photoheader">Photography</h2>
+        <p id="desctext">A look into some of my favourite photos</p>
+
+
 
         <a
         href="https://www.instagram.com/pg.jovan/"
@@ -101,13 +104,20 @@ export default function PhotoLandingPage(props) {
           <p className="captions">Christmas Market, Toronto | Shot on Canon M50</p>
         </div>
         <div className='image-container'>
-          <img alt="pg.jovan" src={img12} />
+        <img alt="pg.jovan" src={img14} />
+          <p className="captions">Farmstead, Mississauga | Shot on Canon M50</p>
+        </div>
+        <div className='image-container'>
+          <img alt="pg.jovan" src={img13} />
+          <p className="captions">Skyline, Toronto | Shot on Canon M50</p>
+        </div>
+        <div className='image-container'>
+        <img alt="pg.jovan" src={img12} />
           <p className="captions">Railroads, Mississauga | Shot on Canon M50</p>
+
         </div>
         
       </div>
-
-
         </div>
 
         <button
