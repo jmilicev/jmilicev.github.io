@@ -23,8 +23,10 @@ export default function ContactTab() {
             ↓
           </button>
 
-    <h2 ref={contactTabRef}>Contact Me!</h2>
-    <a id="email" href="mailto:contact@jovanmilicev.com"> You can reach me at any time at&nbsp;<strong>contact@jovanmilicev.com</strong></a>
+    <h2 id="contacthead" ref={contactTabRef}>Contact Me!</h2>
+
+    <p id='contacttext'>You can reach me at any time at</p>
+    <a id="email" href="mailto:contact@jovanmilicev.com"> contact@jovanmilicev.com </a>
     
     <button id="topButton" onClick={scrollToTop}>
             Return to Top

@@ -104,12 +104,22 @@
     font-size: 1.5em;
 
   }
+#contacthead{
+  margin-bottom: 10px;
+}
+
+ #contacttext{
+  margin-top: 5px !important;
+  margin-bottom: 0px;
+ }
 
   #email {
+    margin-top: 0px;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
 
   }
 
