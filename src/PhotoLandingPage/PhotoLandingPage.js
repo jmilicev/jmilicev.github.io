@@ -1,37 +1,64 @@
-import React from 'react'
+import React, { useEffect, useMemo } from 'react';
 import './PhotoLandingPage.css';
 
-import ig from './photos/instagram.png'
-
-import img1 from './photos/image1.png'
-import img2 from './photos/image2.png'
-import img3 from './photos/image3.png'
-import img4 from './photos/image4.png'
-import img5 from './photos/image5.png'
-import img6 from './photos/image6.png'
-import img7 from './photos/image7.png'
-import img8 from './photos/image8.png'
-import img9 from './photos/image9.png'
-import img10 from './photos/image10.png'
-import img11 from './photos/image11.png'
-import img12 from './photos/image12.png'
-import img13 from './photos/image13.png'
-import img14 from './photos/image14.png'
+import ig from '../share/photos/instagram.png';
+import img1 from '../share/photos/image1.png';
+import img2 from '../share/photos/image2.png';
+import img3 from '../share/photos/image3.png';
+import img4 from '../share/photos/image4.png';
+import img5 from '../share/photos/image5.png';
+import img6 from '../share/photos/image6.png';
+import img7 from '../share/photos/image7.png';
+import img8 from '../share/photos/image8.png';
+import img9 from '../share/photos/image9.png';
+import img10 from '../share/photos/image10.png';
+import img11 from '../share/photos/image11.png';
+import img12 from '../share/photos/image12.png';
+import img13 from '../share/photos/image13.png';
+import img14 from '../share/photos/image14.png';
 
 export default function PhotoLandingPage(props) {
-
   const handlePhotographyButtonClick = () => {
     props.onPhotographyButtonClick();
   };
 
-  const scrollToTop= () => {
+  const scrollToTop = () => {
     window.scrollBy(0, -100000);
   };
 
-  return (
-    <div className='photo-lp-main'>
+  const imageUrls = useMemo(
+    () => [
+      ig,
+      img1,
+      img2,
+      img3,
+      img4,
+      img5,
+      img6,
+      img7,
+      img8,
+      img9,
+      img10,
+      img11,
+      img12,
+      img13,
+      img14,
+    ],
+    []
+  );
+  
+  useEffect(() => {
+    imageUrls.forEach((url) => {
+      const image = new Image();
+      image.src = url;
+    });
+  }, [imageUrls]);
 
-      <button
+  return (
+    <div className="photo-lp-main">
+     
+
+     <button
           className="tophomebutton"
           onClick={handlePhotographyButtonClick}
         >
@@ -131,6 +158,7 @@ export default function PhotoLandingPage(props) {
           Return to Top
         </button>
 
+
     </div>
-  )
+  );
 }

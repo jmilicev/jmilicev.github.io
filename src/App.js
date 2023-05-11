@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import LandingPage from './LandingPage/LandingPage';
 import ExperienceTab from './ExperienceTab/ExperienceTab';
 import ProjectsTab from './ProjectsTab/ProjectsTab';
@@ -9,11 +9,13 @@ import ContactTab from './ContactTab/ContactTab';
 import PhotoLandingPage from './PhotoLandingPage/PhotoLandingPage';
 
 function App() {
+
   const [showInfosTab, setShowInfosTab] = useState(false);
   const infosTabRef = useRef(null);
 
   const [showPhotoPage, setShowPhotoPage] = useState(false);
-  //const photoPageRef = useRef(null);
+
+  const [showFlashPG, setShowFlashPG] = useState(false);
 
   const handlePhotographyButtonClick = () => {
     setShowPhotoPage(!showPhotoPage);
@@ -27,6 +29,18 @@ function App() {
     }
   };
 
+
+  useEffect(() => {
+    //this mounts the photo component for a split second
+    //to preload the images in preparation for clicking
+    //the photography page
+
+    setShowFlashPG(true);
+    setTimeout(function(){
+      setShowFlashPG(false);
+    }, 1); 
+  }, []);
+
   return (
     <>
       {/* photography */}
@@ -35,6 +49,7 @@ function App() {
 
 
       {/* resume portion of the webpage */}
+
       {!showPhotoPage &&
       <LandingPage 
       onPhotographyButtonClick={handlePhotographyButtonClick}
@@ -47,6 +62,8 @@ function App() {
       {showInfosTab && !showPhotoPage && <ProjectsTab />}
       {showInfosTab && !showPhotoPage && <ContactTab/>}
       <Footer />
+
+      {showFlashPG && <PhotoLandingPage />}
     </>
   );
 }

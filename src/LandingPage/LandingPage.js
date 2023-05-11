@@ -5,6 +5,7 @@ import bluebike from './lp-src/blue-bike.svg';
 import './LandingPage.css';
 import dp from  './lp-src/favicon.png';
 
+
 /*
         <a
           className="resume"
@@ -17,6 +18,7 @@ import dp from  './lp-src/favicon.png';
       */
 
 export default function LandingPage(props) {
+  
   const handleExploreButtonClick = () => {
     props.onExploreButtonClick();
 
