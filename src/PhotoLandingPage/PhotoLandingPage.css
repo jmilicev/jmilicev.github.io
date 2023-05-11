@@ -12,7 +12,6 @@
     width: 35px;
     height: 35px;
     margin-bottom: 20px;
-    margin-left: -12.5px;
   }
   
   #desctext {
@@ -81,7 +80,9 @@
   .image-container > img {
     height: auto; /* Remove the fixed height for the image */
     object-fit: scale-down;
-    width: 50vw;
+    border: 3px solid #000000;
+    border-radius: 5px;
+    width: 46vw;
   }
   
   .gallery {
@@ -90,3 +91,4 @@
     grid-gap: 10px; /* Adjust the gap between elements */
     justify-content: center;
   }
+  

@@ -78,7 +78,6 @@ export default function PhotoLandingPage(props) {
         </a>
         </div>
         
-        <div className='gallery'>
 
         <div className='gallery'>
         <div className='image-container'>
@@ -110,7 +109,7 @@ export default function PhotoLandingPage(props) {
 
         <div className='image-container'>
           <img alt="pg.jovan" src={img7} />
-          <p className="captions">Lonely Boat, Oakville | Shot on DJI Mini 20</p>
+          <p className="captions">Lonely Boat, Oakville | Shot on DJI Mavic PRO</p>
         </div>
 
         <div className='image-container'>
@@ -144,7 +143,6 @@ export default function PhotoLandingPage(props) {
 
         </div>
         
-      </div>
         </div>
 
         <button
