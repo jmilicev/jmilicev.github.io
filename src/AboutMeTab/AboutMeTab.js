@@ -24,9 +24,9 @@ export default function AboutMeTab() {
       </p>
       
       <p>
-      My name is Jovan, and I am a 4th year Computer Science student at studying York University.
+      My name is Jovan, and I am a 4th year Computer Science student studying at York University.
       I have had a passion for programming since I was little, writing my first computer program in middle school
-      (A guessing game in Java!).  Aside from computing, I have a passion for the world of finance, specifically investement 
+      (A guessing game in Java!).  Aside from computing, I have a passion for the world of finance, specifically investment 
       banking and securities trading. I also love photography and motorcycles!
       </p>
 
@@ -38,7 +38,7 @@ export default function AboutMeTab() {
       all of which are listed on this website, as well as my LinkedIn and Github. Some project repositories may be private 
       as they are part of a school project, but many others are public, including the code for this website!
       </p><p>
-      I thoroughly enjoyed my as a student, and now as I am coming
+      I thoroughly enjoyed my time as a student, and now as I am coming
       closer to graduation, I am seeking a full or part time position in software development. 
       </p>
       
