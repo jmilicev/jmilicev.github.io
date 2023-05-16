@@ -10,11 +10,6 @@ export default function ContactTab() {
     contactTabRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollToTop= () => {
-    contactTabRef.current.scrollIntoView({ behavior: 'smooth' });
-    window.scrollBy(0, -100000);
-  };
-
   return (
     <div id="contact" className="Contact">
 
@@ -27,10 +22,6 @@ export default function ContactTab() {
 
     <p id='contacttext'>You can reach me at any time at</p>
     <a id="email" href="mailto:contact@jovanmilicev.com"> contact@jovanmilicev.com </a>
-    
-    <button id="topButton" onClick={scrollToTop}>
-            Return to Top
-    </button>
 
     </div>
 

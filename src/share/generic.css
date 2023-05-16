@@ -2,12 +2,25 @@
   /* cleared */
 
 .Projects, .Education, .Experience, .AboutMe, .Contact{
-    background-color: #ffffff;
+    background-color: #18191b;
+    color: white;
     width: 100%;
     padding-bottom: 20px;
     padding-top: 20px;
 
   }
+
+.Footer{
+  background-color: #18191b;
+}
+
+.Footer > * {
+  color: white;
+}
+
+.flinks > img {
+  filter: invert(100%);
+}
 
 #projects, #education, #experience, #aboutme{
     max-width: 800px;
@@ -15,7 +28,7 @@
     padding: 20px;
 }
 
-.share{
+.share, .shareicon{
     width: 40px;
     height: 40px;
   }
@@ -60,8 +73,6 @@
     width: 35px;
     height: 35px;
     zoom: 1.5;
-
-
   }
 
   #arrowbutton:hover{
@@ -83,6 +94,10 @@
 
   .Contact{
     text-align: center;
+  }
+
+  .shareicon{
+    filter: invert(100%);
   }
 
   #topButton{
@@ -108,8 +123,6 @@
     align-items: center;
     flex-direction: column;
     min-height: 12vh;
-    background-color: white;
-    
   }
   
   li {
@@ -139,6 +152,7 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    color: white;
 
   }
 

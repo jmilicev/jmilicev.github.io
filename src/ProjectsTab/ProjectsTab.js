@@ -29,7 +29,7 @@ export default function ProjectsTab() {
         target="_blank"
         rel="noopener noreferrer"
       >
-    <img src={share} className="share" alt="logo" />
+    <img src={share} className="shareicon" alt="logo" />
   </a>
 </div>
       <ul>
@@ -68,7 +68,7 @@ user experience and showcase new skills and experience.</li>
         target="_blank"
         rel="noopener noreferrer"
       >
-    <img src={share} className="share" alt="logo" />
+    <img src={share} className="shareicon" alt="logo" />
   </a>
 </div>
       <ul>
@@ -85,7 +85,7 @@ user experience and showcase new skills and experience.</li>
         target="_blank"
         rel="noopener noreferrer"
       >
-    <img src={share} className="share" alt="logo" />
+    <img src={share} className="shareicon" alt="logo" />
   </a>
 </div>
       <ul>
@@ -103,7 +103,7 @@ user experience and showcase new skills and experience.</li>
         target="_blank"
         rel="noopener noreferrer"
       >
-    <img src={share} className="share" alt="logo" />
+    <img src={share} className="shareicon" alt="logo" />
   </a>
 </div>
       <ul>

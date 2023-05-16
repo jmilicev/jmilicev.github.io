@@ -5,10 +5,10 @@ import '../share/generic.css';
 
 export default function Footer() {
   return (
-    <div className="links">
+    <div className="Footer">
       <footer id="foot">
         <p> Feel free to follow me on my links below!</p>
-        <div className="links-container">
+        <div className="flinks">
           <a
             className="App-link links"
             href="https://www.linkedin.com/in/jovan-milicev/"
