@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.61d1d8ab.css",
-    "main.js": "/static/js/main.7577d54b.js",
+    "main.css": "/static/css/main.27be252c.css",
+    "main.js": "/static/js/main.fb19e88e.js",
     "static/js/787.a6cad6f6.chunk.js": "/static/js/787.a6cad6f6.chunk.js",
+    "static/media/dock.JPG": "/static/media/dock.e8ac4d7a902e35f1ef93.JPG",
     "static/media/image4.png": "/static/media/image4.8f3b96862d56a570d643.png",
     "static/media/image2.png": "/static/media/image2.0d52d1f8c78ab04cad62.png",
     "static/media/image1.png": "/static/media/image1.47523fece22be109d855.png",
@@ -21,18 +22,15 @@
     "static/media/jovan-milicev-resume.pdf": "/static/media/jovan-milicev-resume.89d1316975aba85e052d.pdf",
     "static/media/favicon.png": "/static/media/favicon.e9e2b3c35fba7259bc59.png",
     "static/media/bns.png": "/static/media/bns.35a8fb8f2ccc3bd41698.png",
-    "static/media/red-bike.svg": "/static/media/red-bike.a25233d25bace4bab5cf083b293f8743.svg",
-    "static/media/blue-bike.svg": "/static/media/blue-bike.55399e4807842028a04583ce8ec96b80.svg",
-    "static/media/green-bike.svg": "/static/media/green-bike.53d3f40f4939f1ccfe14431c6465f633.svg",
     "static/media/github.svg": "/static/media/github.3b21c250a99986431958daaa9246a45a.svg",
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.98956d298e14a6384fdb39c42269f2f2.svg",
-    "main.61d1d8ab.css.map": "/static/css/main.61d1d8ab.css.map",
-    "main.7577d54b.js.map": "/static/js/main.7577d54b.js.map",
+    "main.27be252c.css.map": "/static/css/main.27be252c.css.map",
+    "main.fb19e88e.js.map": "/static/js/main.fb19e88e.js.map",
     "787.a6cad6f6.chunk.js.map": "/static/js/787.a6cad6f6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.61d1d8ab.css",
-    "static/js/main.7577d54b.js"
+    "static/css/main.27be252c.css",
+    "static/js/main.fb19e88e.js"
   ]
 }
