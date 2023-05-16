@@ -14,7 +14,6 @@ function App() {
   const infosTabRef = useRef(null);
 
   const [showPhotoPage, setShowPhotoPage] = useState(false);
-
   const [showFlashPG, setShowFlashPG] = useState(false);
 
   const handlePhotographyButtonClick = () => {
@@ -28,7 +27,6 @@ function App() {
       infosTabRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
 
   useEffect(() => {
     //this mounts the photo component for a split second
@@ -56,13 +54,23 @@ function App() {
       onExploreButtonClick={handleExploreButtonClick} />
       }
 
+      
       {showInfosTab && !showPhotoPage && <AboutMeTab />}
       {showInfosTab && !showPhotoPage && <EducationTab />}
       {showInfosTab && !showPhotoPage && <ExperienceTab />}
       {showInfosTab && !showPhotoPage && <ProjectsTab />}
       {showInfosTab && !showPhotoPage && <ContactTab/>}
-      <Footer />
-
+      {showInfosTab && !showPhotoPage && <Footer />}
+      
+      {/*
+      {!showPhotoPage && <AboutMeTab />}
+      {!showPhotoPage && <EducationTab />}
+      {!showPhotoPage && <ExperienceTab />}
+      {!showPhotoPage && <ProjectsTab />}
+      {!showPhotoPage && <ContactTab/>}
+      {!showPhotoPage && <Footer />}
+      */}
+      
       {showFlashPG && <PhotoLandingPage />}
     </>
   );

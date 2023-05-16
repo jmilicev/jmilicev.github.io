@@ -1,5 +1,4 @@
 
-  
   /* cleared */
 
 .Projects, .Education, .Experience, .AboutMe, .Contact{
@@ -16,10 +15,17 @@
     padding: 20px;
 }
 
-  .share{
+.share{
     width: 40px;
     height: 40px;
   }
+
+.links{
+  margin-right: 10px;
+  margin-left: 5px;
+  filter: invert(100%);
+
+}
 
   h2 {
     font-size: 2.5em;
@@ -60,16 +66,11 @@
 
   #arrowbutton:hover{
     background-color: #1584d3;
+    cursor: pointer;
+    
   }
   
-  #resumeheader{
-    background-color: #0059ff;
-  }
 
-  #resumeheader:hover{
-    background-color: #ffffff;
-    color: black;
-  }
 
   a {
     color: #000000;
@@ -77,6 +78,7 @@
   }
   a:hover {
     color: #0059ff;
+    cursor: pointer;
   }
 
   .Contact{
@@ -98,6 +100,7 @@
 
   #topButton:hover{
     background-color: #0059ff;
+    cursor: pointer;
   }
 
   #foot {

@@ -1,0 +1,26 @@
+<a
+          className="red-bike"
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={redbike} id='bike' className="red-bike" alt="red-bike" />
+        </a>
+
+        <a
+          className="green-bike"
+          href="https://www.instagram.com/pg.jovan/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={greenbike} id='bike' className="green-bike" alt="logo" />
+        </a>
+
+        <a
+          className="blue-bike"
+          href="https://www.instagram.com/pg.jovan/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={bluebike} id='bike' className="blue-bike" alt="logo" />
+        </a>

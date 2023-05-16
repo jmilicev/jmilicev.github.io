@@ -1,31 +1,34 @@
-import React from 'react';
-import redbike from './lp-src/red-bike.svg';
-import greenbike from './lp-src/green-bike.svg';
-import bluebike from './lp-src/blue-bike.svg';
+import React, { useState, useEffect } from 'react';
 import './LandingPage.css';
 import dp from  './lp-src/favicon.png';
+import github from '../share/github.svg';
+import linkedin from '../share/linkedin.svg';
 
-
-/*
-        <a
-          className="resume"
-          href={require("../share/jovan-milicev-resume.pdf")}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={resume} className="resume" alt="logo" />
-        </a>
-      */
 
 export default function LandingPage(props) {
+
+  
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollThreshold = 800; // Number of pixels to scroll before changing the background color
+      const isScrolled = window.scrollY > scrollThreshold;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   const handleExploreButtonClick = () => {
     props.onExploreButtonClick();
 
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
-
-
     setTimeout(function(){
 
       const ratio = viewportHeight/viewportWidth;
@@ -36,10 +39,10 @@ export default function LandingPage(props) {
         if(ratio>1){
           // likely mobile device
           // pan screen down slightly to present arrow
-          window.scrollBy(0, 65);
+          window.scrollBy(0, 100);
         }else{
           //for now just have the same behaviour
-          window.scrollBy(0, 65);
+          window.scrollBy(0, 100);
         }
       }
     }, 250); 
@@ -48,6 +51,10 @@ export default function LandingPage(props) {
 
   const handlePhotographyButtonClick = () => {
     props.onPhotographyButtonClick();
+  };
+
+  const scrollToTop= () => {
+    window.scrollBy(0, -100000);
   };
 
   const handleBannerClick = (id) => {
@@ -71,8 +78,10 @@ export default function LandingPage(props) {
     <div className="LandingPage">
       <header className="LP-header">
 
-      <div id="headerbanner">
-      <button id="bannerbutton" className='header' onClick={() => handleBannerClick("aboutme")}>About me</button>
+      <div id="headerbanner" className={`element ${scrolled ? 'scrolled' : ''}`}>
+      <button id="JMbutton" className='header' onClick={scrollToTop}>JM</button>
+      <div className='navbuttons'>
+      <button id="bannerbutton" className='header' onClick={() => handleBannerClick("aboutme")}>About</button>
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("education")}>Education</button>
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("experience")}>Experience</button>
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("projects")}>Projects</button>
@@ -83,16 +92,34 @@ export default function LandingPage(props) {
           id = "resumeheader"
           className='header'>Resume</a>
       </div>
+      </div>
 
 
-
+        <div className='centerpiece'>
         <div id ="home" className='landingPageText'>
         <h3 id='lp-head'>Jovan Milicev</h3>
-        <p id="lp-text">Welcome to my webpage!</p>
+        <p id="lp-text">Full Stack Developer</p>
         <img src={dp} id="dp" alt="logo" />
+        <br></br>
+        <a
+            className="links"
+            href="https://www.linkedin.com/in/jovan-milicev/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={linkedin} alt="linkedin Icon" width="30" height="30" />
+          </a>
+          <a
+            className="links"
+            href="https://github.com/jmilicev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={github} alt="Github Icon" width="30" height="30" />
+          </a>
         </div>
 
-  
+        <div className='buttons'>
         <button
           id = 'photobutton'
           onClick={handlePhotographyButtonClick}
@@ -100,39 +127,13 @@ export default function LandingPage(props) {
           Photography
         </button>
 
-
-        <a
-          className="red-bike"
-          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={redbike} id='bike' className="red-bike" alt="red-bike" />
-        </a>
-
-        <a
-          className="green-bike"
-          href="https://www.instagram.com/pg.jovan/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={greenbike} id='bike' className="green-bike" alt="logo" />
-        </a>
-
-        <a
-          className="blue-bike"
-          href="https://www.instagram.com/pg.jovan/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={bluebike} id='bike' className="blue-bike" alt="logo" />
-        </a>
-
-
         <br></br>
-        <button className="btn" id="exploreButton" onClick={handleExploreButtonClick}>
+        <button id="exploreButton" onClick={handleExploreButtonClick}>
           {props.showProjectsTab ? 'Close' : 'Explore'}
         </button>
+        </div>
+
+        </div>
       </header>
     </div>
   );

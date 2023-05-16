@@ -7,13 +7,31 @@ html {
   filter: brightness(120%);
 }
 
-body {
-  overflow-x: hidden;
-  background-color: #18191b;
+.scrolled {
+  background-color: rgba(24, 25, 27, 0.90);
+  transition: background-color 1.0s ease;
+  /* Additional styles for the scrolled state */
 }
+
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.buttons{
+  margin-top: 20vh;
+}
+
 
 .LandingPage {
   text-align: center;
+  background-image: url("../share/photos/dock.JPG");
+  background-color: #18191b ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 #lp-head, #lp-text{
@@ -25,24 +43,38 @@ body {
   margin-top: 60px;
 }
 
+#JMbutton{
+  background-color: transparent;
+  margin: 0;
+}
+
+#JMbutton:hover{
+  cursor: pointer;
+}
+
+.navbuttons > *{
+  background-color: transparent;
+}
+
 #headerbanner {
-  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
   top: 0;
-  left: 0;
-  padding-top: 20px;
-  padding-bottom: 20px;
   width: 100%;
+  color: #fff;
+  align-items: center;
   z-index: 1;
+  padding: 0.2rem 1%;
+  margin-right: 10px;
 }
 
 .header{
   text-decoration: none;
-  background-color: rgb(0, 0, 0);
   border-radius: 10px;
   color: white;
   font-size: calc(10px + 1vmin);
   font-family: 'Quicksand', sans-serif;
-  font-weight: bold;
   padding: 0.9vh 2.2vh;
   margin-right: 2.5px;
   margin-left: 2.5px;
@@ -50,27 +82,45 @@ body {
   margin-bottom: 8px;
   border: none;
   outline: none;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .header:hover{
-  background-color: #2e6bff;
-  color: white;
+  color: #40a6ff;
+  cursor: pointer;
 }
 
+#resumeheader{
+  border: 2px solid #dcdddf !important;
+  color: white;
+
+}
+
+#resumehead:hover, #photobutton:hover, #exploreButton:hover{
+  transition: color 0.5s ease;
+  
+}
+
+#resumeheader:hover{
+  color: #40a6ff;
+  border: 2px solid #40a6ff !important;
+}
 
 #photobutton{
-  font-size: calc(8px + 1vmin);
-  padding: 6px 12px;
+  font-size: calc(10px + 1vmin);
+  padding: 12px 30px;
 }
 
-#photobutton:hover{
-  background-color: red;
+#photobutton:hover, #exploreButton:hover{
+  color: #40a6ff;
+  border: 2px solid #40a6ff !important;
+  cursor: pointer;
 }
 
 #exploreButton {
   font-size: calc(10px + 1vmin);
-  padding: 12px 30px;
+  padding: 12px 50px;
+  margin-top: 20px;
 }
 
 #exploreButton, #photobutton{
@@ -78,21 +128,19 @@ body {
   transition: background-color 0.3s ease;
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
-  background-color: rgb(0, 0, 0);
-  border-radius: 10px;
-  color: white;
+  background-color: transparent;
+  border-radius: 40px;
+  color: rgb(255, 255, 255);
+  border: 2px solid #ffffff !important;
 }
 
-#exploreButton:hover {
-  background-color: #2e6bff;
-}
+
 
 #dp {
   padding-top: 20px;
   width: 20vh;
   height: 20vh;
 }
-
 
 #bike{
   height: 5vmin;
@@ -102,14 +150,14 @@ body {
 }
 
 .LP-header {
-  min-height: 88vh;
+  /* bg size */
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
   flex-direction: column;
-  background-color: #18191b;
 }
 
 @keyframes logo-spin {
