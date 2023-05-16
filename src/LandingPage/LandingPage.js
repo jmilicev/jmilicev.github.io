@@ -12,7 +12,16 @@ export default function LandingPage(props) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollThreshold = 800; // Number of pixels to scroll before changing the background color
+
+      var thresh;
+      //darken banner on mobile EARLY
+      if(window.innerWidth < window.innerHeight){
+        thresh = 100;
+      }else{
+        thresh = 800;
+      }
+
+      const scrollThreshold = thresh; // Number of pixels to scroll before changing the background color
       const isScrolled = window.scrollY > scrollThreshold;
       setScrolled(isScrolled);
     };

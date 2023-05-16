@@ -37,6 +37,7 @@ function App() {
     setTimeout(function(){
       setShowFlashPG(false);
     }, 1); 
+
   }, []);
 
   return (
