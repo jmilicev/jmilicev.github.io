@@ -129,16 +129,18 @@ export default function LandingPage(props) {
         </div>
 
         <div className='buttons'>
+        <button id="exploreButton" onClick={handleExploreButtonClick}>
+          {props.showProjectsTab ? 'Close' : 'Explore'}
+        </button>
+
+
+        <br></br>
+        
         <button
           id = 'photobutton'
           onClick={handlePhotographyButtonClick}
         >
           Photography
-        </button>
-
-        <br></br>
-        <button id="exploreButton" onClick={handleExploreButtonClick}>
-          {props.showProjectsTab ? 'Close' : 'Explore'}
         </button>
         </div>
 

@@ -24,14 +24,9 @@ body {
   scrollbar-color: transparent transparent;
 }
 
-.buttons{
-  margin-top: 20vh;
-}
-
-
 .LandingPage {
   text-align: center;
-  background-image: url("../share/photos/dock.JPG");
+  background-image: url("../share/photos/dock-min.JPG");
   background-color: #18191b ;
   background-repeat: no-repeat;
   background-size: cover;
@@ -113,14 +108,16 @@ body {
 }
 
 .buttons {
+  margin-top: 20vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 10px;
 }
 
 .buttons button {
-  flex: 1;
-  margin-right: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 
@@ -132,7 +129,7 @@ body {
 
 #exploreButton {
   font-size: 15px;
-  padding: 12px 35px;
+  padding: 12px 48.5px;
 }
 
 #photobutton{
