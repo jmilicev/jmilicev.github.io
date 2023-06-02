@@ -26,7 +26,7 @@ export default function ExperienceTab() {
       <h2 ref={experienceTabRef}>Experience</h2>
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
-      <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Chatbase | Full Stack Developer</h3>
+      <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Full Stack Developer | Chatbase</h3>
       <a href="https://www.chatbase.co"><img src={chatbase} className="share" alt="logo" /></a>
       </div>
       <ul>
