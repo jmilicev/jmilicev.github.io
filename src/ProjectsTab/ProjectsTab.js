@@ -95,22 +95,6 @@ user experience and showcase new skills and experience.</li>
       </ul>
 
       
-      <div id ="logoed"style={{ display: "flex", alignItems: "center" }}>
-      <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Gaming Website | NodeJS, Express, Passport</h3>
-      <a
-        className="image"
-        href="https://github.com/jmilicev/website"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-    <img src={share} className="shareicon" alt="logo" />
-  </a>
-</div>
-      <ul>
-        <li>Express website with multiple functions and pages.</li>
-        <li>Implements encryption-based login system to authenticate users and personalize accordingly.</li>
-        <li>Contains simple games coded in JavaScript such as Tic Tac Toe.</li>
-      </ul>
     </div>
     </div>
   );

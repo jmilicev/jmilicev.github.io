@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import '../share/generic.css';
 import york from '../share/york.png';
 import bns from './bns.png';
+import chatbase from '../share/chatbase.png';
 
 
 export default function ExperienceTab() {
@@ -23,6 +24,17 @@ export default function ExperienceTab() {
     <div id="experience">
 
       <h2 ref={experienceTabRef}>Experience</h2>
+
+      <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
+      <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Chatbase | Full Stack Developer</h3>
+      <a href="https://www.chatbase.co"><img src={chatbase} className="share" alt="logo" /></a>
+      </div>
+      <ul>
+        <li>Created comprehensive documentation for the Chatbase API, providing clear instructions and guidelines for integration and usage by external developers.</li>
+        <li>Conducted thorough testing of the API using tools like Postman, ensuring its functionality, reliability, and compatibility with various platforms.</li>
+        <li>Conducted user testing and gathered feedback to identify areas of improvement for the Chatbase API, ensuring a user-centric approach in its development.</li>
+        <li>Identified and reported API bugs, providing detailed feedback to the API development team for prompt resolution and improvement of the Chatbase API performance.</li>
+      </ul>
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Undergraduate Teaching Assistant | York University</h3>
