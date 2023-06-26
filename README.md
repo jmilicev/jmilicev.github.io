@@ -1,5 +1,5 @@
 
-# Jovan Milicev's Personal Website
+# My Personal Website
 
 This repository contains the source code for my personal portfolio website, designed and implemented using React.js. 
 
