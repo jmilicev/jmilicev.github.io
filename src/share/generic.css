@@ -40,7 +40,13 @@
 
 }
 
-  h2 {
+
+#demos{
+
+  color:white;
+}
+ 
+h2 {
     font-size: 2.5em;
     text-align: center;
   }

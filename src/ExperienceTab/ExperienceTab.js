@@ -30,10 +30,10 @@ export default function ExperienceTab() {
       <a href="https://www.chatbase.co"><img src={chatbase} className="share" alt="logo" /></a>
       </div>
       <ul>
-        <li>Created comprehensive documentation for the Chatbase API, providing clear instructions and guidelines for integration and usage by external developers.</li>
+        <li>Created comprehensive and interactive documentation for the Chatbase API, providing clear instructions and guidelines for integration and usage by external developers.</li>
         <li>Conducted thorough testing of the API using tools like Postman, ensuring its functionality, reliability, and compatibility with various platforms.</li>
+        <li>Developed a Discord bot for the service, allowing it to be used by clients within their discord server. </li>
         <li>Conducted user testing and gathered feedback to identify areas of improvement for the Chatbase API, ensuring a user-centric approach in its development.</li>
-        <li>Identified and reported API bugs, providing detailed feedback to the API development team for prompt resolution and improvement of the Chatbase API performance.</li>
       </ul>
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
