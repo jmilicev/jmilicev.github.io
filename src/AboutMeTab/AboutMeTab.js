@@ -18,7 +18,7 @@ export default function AboutMeTab() {
     <div id="aboutme">
       <h2 ref={aboutMeTabRef}>My Story</h2>
       <p>
-      Welcome to my personal website! I have created this page as a central hub
+      Welcome to my personal website. I have created this page as a central hub
       to contain all of my projects, job experience, and anything else related
       to my career and personal life that I may see fit. 
       </p>
@@ -27,7 +27,7 @@ export default function AboutMeTab() {
       My name is Jovan, and I am a 4th year Computer Science student studying at York University.
       I have had a passion for programming since I was little, writing my first computer program in middle school
       (A guessing game in Java!).  Aside from computing, I have a passion for the world of finance, specifically investment 
-      banking and securities trading. I also love photography and motorcycles!
+      banking and securities trading. I also love photography and motorcycles.
       </p>
 
       <p>
@@ -43,7 +43,7 @@ export default function AboutMeTab() {
       </p>
       
       <p>
-      Thanks for visiting, and feel free to look around!
+      Thanks for visiting, and feel free to look around.
       </p>
       
       </div>
