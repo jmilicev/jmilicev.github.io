@@ -26,7 +26,7 @@ export default function AboutMeTab() {
       <p>
       My name is Jovan, and I am a 4th year Computer Science student studying at York University.
       I have had a passion for programming since I was little, writing my first computer program in middle school
-      (A guessing game in Java!).  Aside from computing, I have a passion for the world of finance, specifically investment 
+      (A guessing game in Java).  Aside from computing, I have a passion for the world of finance, specifically investment 
       banking and securities trading. I also love photography and motorcycles.
       </p>
 
@@ -36,7 +36,7 @@ export default function AboutMeTab() {
       development and iVerilog programming. As a student, I have worked on many interesting projects that I have
       listed on this website, from a discord finance bot, to coding an entirely new programming language from scratch, 
       all of which are listed on this website, as well as my LinkedIn and Github. Some project repositories may be private 
-      as they are part of a school project, but many others are public, including the code for this website!
+      as they are part of a school project, but many others are public, including the code for this website.
       </p><p>
       I thoroughly enjoyed my time as a student, and now as I am coming
       closer to graduation, I am seeking a full or part time position in software development. 
