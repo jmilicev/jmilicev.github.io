@@ -71,24 +71,6 @@ export default function ProjectsTab() {
       </ul>
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
-      <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Discord-GPT | NodeJS, Discord API</h3>
-      <a
-        className="image"
-        href="https://github.com/jmilicev/discord-gpt"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-    <img src={share} className="shareicon" alt="logo" />
-  </a>
-</div>
-      <ul>
-        <li>Discord bot capable of querying OpenAI language models.</li>
-        <li>Configurable using clients own API key, which is saved on a secure encrypted database.</li>
-        <li>Hosted on linode for high degree of reliability, available 24/7.</li>
-        <li>Invite it to your server here: <a id="demos" href="https://discord.com/api/oauth2/authorize?client_id=1120429356255281232&permissions=534723950656&scope=bot">Discord-GPT</a>.</li>
-      </ul>
-
-      <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Distributed Go Chat Website | Go, JS, Kubernetes</h3>
       <a href="https://www.yorku.ca"><img src={york} className="share" alt="logo" /></a>
 </div>
@@ -115,9 +97,47 @@ export default function ProjectsTab() {
         <li>Designed efficient algorithms on back-end for hand evaluation.</li>
         <li>Implemented AI players who play uniquely based on randomly generated personality traits.</li>
       </ul>
-
-
+   
+      <div id ="logoed" style={{ display: "flex", alignItems: "center" }}>
+      <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Internet Scraper | Axios, Cheerio</h3>
+      <a
+        className="image"
+        href="https://github.com/jmilicev/jscraper"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+    <img src={share} className="shareicon" alt="logo" />
+  </a>
+</div>
+      <ul>
+      <li>Developed an internet web-scraper capable of extracting text from the internet pertaining to an array of keywords.</li>
+      <li>Primarily developed to source data to train LLMs and other data intensive applications.</li>
+      <li>Highly configurable and adaptable, allowing the user to specify the search engine, depth, quantity of webpages searched, etc.</li>
+      </ul>
+   
+   
+      <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
+      <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Discord-GPT | NodeJS, Discord API</h3>
+      <a
+        className="image"
+        href="https://github.com/jmilicev/discord-gpt"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+    <img src={share} className="shareicon" alt="logo" />
+  </a>
+</div>
+      <ul>
+        <li>Discord bot capable of querying OpenAI language models.</li>
+        <li>Configurable using clients own API key, which is saved on a secure encrypted database.</li>
+        <li>Hosted on linode for high degree of reliability, available 24/7.</li>
+        <li>Invite it to your server here: <a id="demos" href="https://discord.com/api/oauth2/authorize?client_id=1120429356255281232&permissions=534723950656&scope=bot">Discord-GPT</a>.</li>
+      </ul>
+   
+   
+   
     </div>
     </div>
+    
   );
 }

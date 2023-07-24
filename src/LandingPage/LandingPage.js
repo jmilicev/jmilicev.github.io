@@ -95,7 +95,7 @@ export default function LandingPage(props) {
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("experience")}>Experience</button>
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("projects")}>Projects</button>
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("contact")}>Contact</button>
-      <a  href={require("../share/jovan-milicev-resume.pdf")}
+      <a  href="https://github.com/jmilicev/resume/blob/main/resume.pdf"
           target="_blank"
           rel="noopener noreferrer" 
           id = "resumeheader"
