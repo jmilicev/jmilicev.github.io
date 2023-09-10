@@ -27,9 +27,8 @@ export default function EducationTab() {
         <a href="https://www.yorku.ca"><img src={york} className="share" alt="logo" /></a>
         </div>
         <ul>
-        <li>GPA of 7.6/9.</li>
-        <li>Graduating in October 2023 with only one class to go!</li>
-        <li>On track to graduate with first class standing, and part of the Deans honour roll.</li>
+
+        <li>Graduated in August 2023 with First Class Standing and member of the Dean's honour roll. </li>
         <li>Data Structures and Algorithms, Computer Architecture, Advanced Object Oriented Programming, Distributed Systems, Database Management Systems, Computer Networking.</li>
         <li>My electives include Business, Economics, Finance and Astronomy.</li>
         </ul>
