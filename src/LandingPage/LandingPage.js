@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './LandingPage.css';
 import dp from  './lp-src/favicon.png';
+//import dp from  './lp-src/x.jpeg';
 import github from '../share/github.svg';
 import linkedin from '../share/linkedin.svg';
 
@@ -106,10 +107,11 @@ export default function LandingPage(props) {
 
         <div className='centerpiece'>
         <div id ="home" className='landingPageText'>
-        <h3 id='lp-head'>Jovan Milicev</h3>
-        <p id="lp-text">Full Stack Developer</p>
+    
         <img src={dp} id="dp" alt="logo" />
         <br></br>
+        <h3 id='lp-head'>Jovan Milicev</h3>
+
         <a
             className="links"
             href="https://www.linkedin.com/in/jovan-milicev/"

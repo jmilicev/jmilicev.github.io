@@ -26,7 +26,7 @@ body {
 
 .LandingPage {
   text-align: center;
-  background-image: url("../share/photos/dock-min.JPG");
+  background-image: url("../share/photos/dock-min-blur.jpg");
   background-color: #18191b ;
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,6 +36,8 @@ body {
 #lp-head, #lp-text{
   margin: 0;
   padding: 0;
+  margin-bottom: 10px;
+
 }
 
 .landingPageText{
@@ -49,6 +51,7 @@ body {
 
 #JMbutton:hover{
   cursor: pointer;
+
 }
 
 .navbuttons > *{
