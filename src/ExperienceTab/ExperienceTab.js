@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import '../share/generic.css';
 import york from '../share/york.png';
 import bns from './bns.png';
+import metrolinx from './metrolinx.jpeg';
 import chatbase from '../share/chatbase.png';
 
 
@@ -26,13 +27,29 @@ export default function ExperienceTab() {
       <h2 ref={experienceTabRef}>Experience</h2>
 
       <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
+      <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Data Analyst | Metrolinx</h3>
+      <a href="https://www.metrolinx.com/en"><img src={metrolinx} className="share" alt="logo" /></a>
+      </div>
+      <ul>
+        <li>Analyze and interpret complex data sets to inform strategic decision-making processes within the transportation sector.</li>
+        <li>Utilize advanced data analysis tools and techniques to improve operational efficiency and optimize transit services.</li>
+        <li>Collaborate with cross-functional teams to identify trends, anomalies, and opportunities in transit data.</li>
+        <li>Develop and maintain comprehensive reports and dashboards, providing actionable insights for key stakeholders.</li>
+        <li>Implement data quality controls and validation processes to ensure the accuracy and integrity of analytical outputs.</li>
+        <li>Contribute to the development of predictive models and algorithms, enhancing forecasting and planning capabilities.</li>
+
+
+      </ul>
+
+
+      <div  id ="logoed" style={{ display: "flex", alignItems: "center" }}>
       <h3 style={{ marginRight: "20px",marginTop: "23px" }}>Full Stack Developer | Chatbase</h3>
       <a href="https://www.chatbase.co"><img src={chatbase} className="share" alt="logo" /></a>
       </div>
       <ul>
         <li>Developed a website providing comprehensive and interactive documentation for the Chatbase API, providing clear instructions and guidelines for integration and usage by external developers.</li>
         <li>Conducted thorough testing of the API using tools like Postman, ensuring its functionality, reliability, and compatibility with various platforms.</li>
-        <li> Created a Discord Bot for the platform enabling users to interact with the service through discord. </li>
+        <li>Created a Discord Bot for the platform enabling users to interact with the service through discord. </li>
         <li>Tested, identified and corrected bugs in the production website to ensure a high quality user experience.</li>
       </ul>
 
