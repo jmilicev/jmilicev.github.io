@@ -1,31 +1,41 @@
-/* Main desktop and landscape styles (exactly how they were) */
+/* Ensure the background covers the whole page and the text is white */
+html, body {
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
+  width: 100%;
+  height: 100%;
+  background-color: #18191b; /* Set the background color to match your section backgrounds */
+  color: white; /* Set global text color to white */
+  overflow-x: hidden; /* Prevent horizontal overflow and scrolling */
+}
+
+/* Main content container */
 #projects, #education, #experience, #aboutme {
-  max-width: 1000px !important;
+  max-width: 100%; /* Allow full width of the screen */
   width: 100%;
   margin: 0 auto;
   padding: 20px;
-  box-sizing: border-box; /* Ensures padding is included in width calculation */
+  box-sizing: border-box; /* Include padding and border in element width */
+  word-wrap: break-word; /* Break long words to prevent text overflow */
 }
 
+/* Ensure background color and other general styles */
 .Experience, .Projects, .Education, .AboutMe, .Contact {
-  background-color: #18191b;
-  color: white;
+  background-color: #18191b; /* Ensure no white is visible */
   width: 100%;
   padding-bottom: 20px;
   padding-top: 20px;
   box-sizing: border-box; /* Prevent any overflow from padding */
+  color: white; /* Reinforce white text within these sections */
 }
 
-#email{
-  color:white;
-}
-
+/* Footer styling */
 .Footer {
   background-color: #18191b;
 }
 
 .Footer > * {
-  color: white;
+  color: white; /* Keep footer text white */
 }
 
 .flinks > img {
@@ -50,10 +60,12 @@
 h2 {
   font-size: 2.5em;
   text-align: center;
+  color: white; /* Ensure headings are white */
 }
 
 h3 {
   font-size: 1.8em;
+  color: white; /* Ensure subheadings are white */
 }
 
 #arrowbutton {
@@ -75,7 +87,7 @@ h3 {
 }
 
 a {
-  color: #000000;
+  color: #ffffff; /* Ensure links are white */
   text-decoration: underline;
 }
 
@@ -98,7 +110,7 @@ a:hover {
   font-weight: bold;
   background-color: rgb(0, 0, 0);
   border-radius: 10px;
-  color: white;
+  color: white; /* Ensure button text is white */
 }
 
 #topButton:hover {
@@ -111,11 +123,13 @@ a:hover {
   align-items: center;
   flex-direction: column;
   min-height: 12vh;
+  color: white; /* Ensure footer text is white */
 }
 
 li {
   font-size: 1.2em;
   margin-bottom: 10px;
+  color: white; /* Ensure list items are white */
 }
 
 /* Portrait-style (phone or tablet in vertical mode) - Apply all the recent changes here */
@@ -139,6 +153,7 @@ li {
       padding-bottom: 20px;
       padding-top: 20px;
       box-sizing: border-box; /* Prevent overflow from padding */
+      color: white; /* Ensure text is white in portrait mode */
   }
 
   /* Fix image sizes and remove inverted colors */
@@ -156,14 +171,17 @@ li {
 
   h2 {
       font-size: 2em; /* Smaller heading for smaller screens */
+      color: white; /* Ensure headings are white */
   }
 
   h3 {
       font-size: 1.5em; /* Adjust subheading size */
+      color: white; /* Ensure subheadings are white */
   }
 
   li {
       font-size: 1em; /* Smaller list items on mobile */
+      color: white; /* Ensure list items are white */
   }
 
   #arrowbutton {
@@ -177,20 +195,24 @@ li {
 
   #foot {
       padding: 10px;
+      color: white; /* Ensure footer text is white */
   }
 
   /* Extra small screens (like very small phones) */
   @media screen and (max-width: 480px) {
       h2 {
           font-size: 1.8em;
+          color: white; /* Ensure headings are white */
       }
 
       h3 {
           font-size: 1.2em;
+          color: white; /* Ensure subheadings are white */
       }
 
       li {
           font-size: 0.9em;
+          color: white; /* Ensure list items are white */
       }
 
       .share, .shareicon {
