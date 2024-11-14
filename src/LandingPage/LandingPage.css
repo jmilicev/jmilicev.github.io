@@ -11,10 +11,18 @@ html {
   margin-bottom: 20px;
 }
 
-.scrolled {
-  background-color: rgba(24, 25, 27, 0.90);
-  transition: background-color 1.0s ease;
-  /* Additional styles for the scrolled state */
+#headerbanner.scrolled {
+  background-color: rgba(24, 25, 27, 0.90); /* Darkens the background */
+  transition: background-color 1.0s ease; /* Smooth transition */
+}
+
+/* Make text color white when scrolled */
+#headerbanner.scrolled .header {
+  color: white; /* Change text color to white for elements with the 'header' class */
+}
+
+#headerbanner.scrolled .navbuttons button {
+  color: white; /* Change text color to white for buttons inside .navbuttons */
 }
 
 body {
@@ -46,7 +54,7 @@ body {
 
 #JMbutton{
   background-color: transparent;
-  margin: 0;
+
 }
 
 #JMbutton:hover{
@@ -70,6 +78,15 @@ body {
   padding: 0.2rem 1%;
   margin-right: 10px;
 }
+#JMbutton{
+  font-weight: bold;
+}
+#bannerbutton{
+  font-weight: bold;
+  font-size: 12px;
+}
+
+
 
 .header{
   text-decoration: none;

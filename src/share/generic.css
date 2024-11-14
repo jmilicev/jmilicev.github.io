@@ -11,6 +11,7 @@ html, body {
   z-index: 10;
 }
 
+
 /* Main content container */
 #projects, #education, #experience, #aboutme {
   max-width: 100%; /* Allow full width of the screen */
@@ -231,3 +232,26 @@ li {
       padding: 20px; /* Maintain padding for spacing */
   }
 }
+
+/* Portrait-style (phone or tablet in vertical mode) - Apply all the recent changes here */
+@media only screen and (orientation: portrait) {
+  /* Fix image sizes and remove inverted colors */
+  img, .share, .shareicon {
+    max-width: 300%; /* Ensure images and icons are responsive */
+    height: auto; /* Maintain aspect ratio */
+    filter: none; /* Remove inverted color */
+  }
+
+  .flinks > img {
+    max-width: 50px; /* Limit flinks icon size */
+    height: auto;
+    filter: none; /* Remove inverted colors */
+  }
+
+  /* Adjust logos inside links */
+  a img {
+    max-width: 80px; /* Set a max width to prevent logos from getting too large */
+    height: auto; /* Ensure the aspect ratio is maintained */
+  }
+}
+

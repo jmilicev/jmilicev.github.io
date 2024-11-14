@@ -28,7 +28,7 @@ export default function LandingPage(props) {
       if (arrow) {
         arrow.classList.add('shake');
         window.scrollBy({
-          top: ratio > 1 ? 100 : 100, // Adjust scroll distance if needed
+          top: ratio > 1 ? 160 : 100, // Adjust scroll distance if needed
           behavior: 'smooth',
         });
       }
