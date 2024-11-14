@@ -59,7 +59,6 @@ function App() {
       {showInfosTab && !showPhotoPage && <AboutMeTab />}
       {showInfosTab && !showPhotoPage && <EducationTab />}
       {showInfosTab && !showPhotoPage && <ExperienceTab />}
-      {showInfosTab && !showPhotoPage && <ProjectsTab />}
       {showInfosTab && !showPhotoPage && <ContactTab/>}
       {showInfosTab && !showPhotoPage && <Footer />}
       

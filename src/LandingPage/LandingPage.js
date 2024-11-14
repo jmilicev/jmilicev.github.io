@@ -94,7 +94,6 @@ export default function LandingPage(props) {
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("aboutme")}>About</button>
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("education")}>Education</button>
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("experience")}>Experience</button>
-      <button id="bannerbutton" className='header' onClick={() => handleBannerClick("projects")}>Projects</button>
       <button id="bannerbutton" className='header' onClick={() => handleBannerClick("contact")}>Contact</button>
       </div>
       </div>

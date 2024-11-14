@@ -28,9 +28,9 @@ export default function EducationTab() {
         </div>
         <ul>
 
-        <li>Graduated in August 2023 with First Class Standing and member of the Dean's honour roll. </li>
+        <li>Graduated in August 2023 with First Class Standing. </li>
         <li>Data Structures and Algorithms, Computer Architecture, Advanced Object Oriented Programming, Distributed Systems, Database Management Systems, Computer Networking.</li>
-        <li>My electives include Business, Economics, Finance and Astronomy.</li>
+        <li>Electives include Business, Economics, Finance and Astronomy.</li>
         </ul>
 
       </div>

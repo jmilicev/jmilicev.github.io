@@ -1,14 +1,23 @@
 
   /* cleared */
 
-.Projects, .Education, .Experience, .AboutMe, .Contact{
+  #projects, #education, #experience, #aboutme {
+    max-width: 1000px !important; /* Force the wider width */
+    width: 100%; /* Ensure full width usage */
+    margin: 0 auto; /* Keep it centered */
+    padding: 20px; /* Maintain padding for spacing */
+}
+
+.Experience, .Projects, .Education, .AboutMe, .Contact {
     background-color: #18191b;
     color: white;
     width: 100%;
     padding-bottom: 20px;
     padding-top: 20px;
+    box-sizing: border-box; /* Ensure padding doesn't limit the width */
+}
 
-  }
+
 
 .Footer{
   background-color: #18191b;
