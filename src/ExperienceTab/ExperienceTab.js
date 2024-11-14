@@ -28,7 +28,7 @@ export default function ExperienceTab() {
 
 
       <div id="logoed" style={{ display: "flex", alignItems: "center" }}>
-      <h3 style={{ marginRight: "20px", marginTop: "23px" }}>Business Intelligence & Reporting Analyst - Metrolinx</h3>
+      <h3 style={{ marginRight: "20px", marginTop: "23px" }}>BI & Reporting Analyst - Metrolinx</h3>
       <h4 style={{ marginRight: "20px", marginTop: "23px" }}>November 2024 - Present</h4>
       <a href="https://www.metrolinx.com/en"><img src={metrolinx} className="share" alt="logo" /></a>
     </div>

@@ -1,25 +1,26 @@
-
-  /* cleared */
-
-  #projects, #education, #experience, #aboutme {
-    max-width: 1000px !important; /* Force the wider width */
-    width: 100%; /* Ensure full width usage */
-    margin: 0 auto; /* Keep it centered */
-    padding: 20px; /* Maintain padding for spacing */
+/* Main desktop and landscape styles (exactly how they were) */
+#projects, #education, #experience, #aboutme {
+  max-width: 1000px !important;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box; /* Ensures padding is included in width calculation */
 }
 
 .Experience, .Projects, .Education, .AboutMe, .Contact {
-    background-color: #18191b;
-    color: white;
-    width: 100%;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    box-sizing: border-box; /* Ensure padding doesn't limit the width */
+  background-color: #18191b;
+  color: white;
+  width: 100%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  box-sizing: border-box; /* Prevent any overflow from padding */
 }
 
+#email{
+  color:white;
+}
 
-
-.Footer{
+.Footer {
   background-color: #18191b;
 }
 
@@ -31,146 +32,170 @@
   filter: invert(100%);
 }
 
-#projects, #education, #experience, #aboutme{
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
+.share, .shareicon {
+  width: 40px;
+  height: 40px;
 }
 
-.share, .shareicon{
-    width: 40px;
-    height: 40px;
-  }
-
-.links{
+.links {
   margin-right: 10px;
   margin-left: 5px;
   filter: invert(100%);
-
 }
 
-
-#demos{
-
-  color:white;
+#demos {
+  color: white;
 }
- 
+
 h2 {
-    font-size: 2.5em;
-    text-align: center;
-  }
-  
-  h3 {
-    font-size: 1.8em;
-  }
+  font-size: 2.5em;
+  text-align: center;
+}
 
-  #arrowbutton{
-    display: block;
-    margin: auto;
-    background-color: #0077cc;
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
+h3 {
+  font-size: 1.8em;
+}
 
+#arrowbutton {
+  display: block;
+  margin: auto;
+  background-color: #0077cc;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  font-family: sans-serif;
+  width: 35px;
+  height: 35px;
+  zoom: 1.5;
+}
 
-    /* 
-    dont even get me started !
-    this is a fix to a terrible css bug 
-    that caused misaligned arrows on mobile
+#arrowbutton:hover {
+  background-color: #1584d3;
+  cursor: pointer;
+}
 
-    you cannot increase the font-size because
-    it causes the arrow to be misaligned on
-    some mobile devices, this zoom trick
-    fixes the allignment issue
-    */
+a {
+  color: #000000;
+  text-decoration: underline;
+}
 
-    font-family: sans-serif;
-    width: 35px;
-    height: 35px;
-    zoom: 1.5;
-  }
+a:hover {
+  color: #0059ff;
+  cursor: pointer;
+}
 
-  #arrowbutton:hover{
-    background-color: #1584d3;
-    cursor: pointer;
-    
-  }
-  
+.Contact {
+  text-align: center;
+}
 
+#topButton {
+  font-size: calc(8px + 1vmin);
+  padding: 6px 12px;
+  margin-top: 20px;
+  border: none;
+  transition: background-color 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+  color: white;
+}
 
-  a {
-    color: #000000;
-    text-decoration: underline;
-  }
-  a:hover {
-    color: #0059ff;
-    cursor: pointer;
-  }
+#topButton:hover {
+  background-color: #0059ff;
+  cursor: pointer;
+}
 
-  .Contact{
-    text-align: center;
-  }
+#foot {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 12vh;
+}
 
-  .shareicon{
-    filter: invert(100%);
-  }
-
-  #topButton{
-      font-size: calc(8px + 1vmin);
-      padding: 6px 12px;
-      margin-top: 20px;
-      border: none;
-      transition: background-color 0.3s ease;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: bold;
-      background-color: rgb(0, 0, 0);
-      border-radius: 10px;
-      color: white;
-  }
-
-  #topButton:hover{
-    background-color: #0059ff;
-    cursor: pointer;
-  }
-
-  #foot {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    min-height: 12vh;
-  }
-  
-  li {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-  
-  li:before {
-    color: #000000;
-    font-weight: bold;
-    font-size: 1.5em;
-
-  }
-#contacthead{
+li {
+  font-size: 1.2em;
   margin-bottom: 10px;
 }
 
- #contacttext{
-  margin-top: 5px !important;
-  margin-bottom: 0px;
- }
-
-  #email {
-    margin-top: 0px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: white;
-
+/* Portrait-style (phone or tablet in vertical mode) - Apply all the recent changes here */
+@media only screen and (orientation: portrait) {
+  html, body {
+      width: 100%;
+      overflow-x: hidden; /* Prevent horizontal overflow */
   }
 
-  .links-container img {
-    margin-right: 10px;
+  #projects, #education, #experience, #aboutme {
+      max-width: 100%; /* Allow full width of the screen */
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      word-wrap: break-word; /* Prevent text overflow */
   }
+
+  .Experience, .Projects, .Education, .AboutMe, .Contact {
+      width: 100%;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      box-sizing: border-box; /* Prevent overflow from padding */
+  }
+
+  /* Fix image sizes and remove inverted colors */
+  img, .share, .shareicon {
+      max-width: 100%; /* Ensure images and icons are responsive */
+      height: auto; /* Maintain aspect ratio */
+      filter: none; /* Remove inverted color */
+  }
+
+  .flinks > img {
+      max-width: 50px; /* Limit flinks icon size */
+      height: auto;
+      filter: none; /* Remove inverted colors */
+  }
+
+  h2 {
+      font-size: 2em; /* Smaller heading for smaller screens */
+  }
+
+  h3 {
+      font-size: 1.5em; /* Adjust subheading size */
+  }
+
+  li {
+      font-size: 1em; /* Smaller list items on mobile */
+  }
+
+  #arrowbutton {
+      zoom: 1.2; /* Adjust button size for smaller screens */
+  }
+
+  #topButton {
+      font-size: calc(7px + 1vmin); /* Adjust button font size for mobile */
+      padding: 5px 10px;
+  }
+
+  #foot {
+      padding: 10px;
+  }
+
+  /* Extra small screens (like very small phones) */
+  @media screen and (max-width: 480px) {
+      h2 {
+          font-size: 1.8em;
+      }
+
+      h3 {
+          font-size: 1.2em;
+      }
+
+      li {
+          font-size: 0.9em;
+      }
+
+      .share, .shareicon {
+          width: 25px;
+          height: 25px; /* Smaller icons for extra small screens */
+      }
+  }
+}
