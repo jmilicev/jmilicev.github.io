@@ -1,12 +1,15 @@
-/* Ensure the background covers the whole page and the text is white */
+
 html, body {
-  margin: 0; /* Remove any default margin */
-  padding: 0; /* Remove any default padding */
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
-  background-color: #18191b; /* Set the background color to match your section backgrounds */
-  color: white; /* Set global text color to white */
-  overflow-x: hidden; /* Prevent horizontal overflow and scrolling */
+  background-color: #18191b;
+  color: white;
+
+}
+#JMbutton, #exploreButton {
+  z-index: 10;
 }
 
 /* Main content container */
@@ -219,5 +222,14 @@ li {
           width: 25px;
           height: 25px; /* Smaller icons for extra small screens */
       }
+  }
+}
+
+/* Desktop and landscape only styles: Restrict the text width to 2/3 of the screen */
+@media only screen and (min-width: 1024px) and (orientation: landscape) {
+  #projects, #education, #experience, #aboutme {
+      max-width: 66%; /* Make the content take up 2/3 of the screen */
+      margin: 0 auto; /* Center the content with auto margins */
+      padding: 20px; /* Maintain padding for spacing */
   }
 }
