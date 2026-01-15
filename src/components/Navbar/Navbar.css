@@ -1,0 +1,88 @@
+/* src/components/Navbar/Navbar.css */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  background: rgba(15, 17, 21, 0.95);
+  padding: 15px 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  cursor: pointer;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  /* Ensure no margins are pushing it off-center */
+  margin: 0; 
+  line-height: 1;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-family: var(--font-main);
+  font-weight: 500;
+}
+
+.nav-links button:hover {
+  color: var(--accent-color);
+}
+
+/* --- Mobile Fix --- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 0;
+    background: rgba(15, 17, 21, 0.98); 
+  }
+
+  .nav-content {
+    flex-direction: column;
+    /* Explicitly force horizontal centering */
+    align-items: center; 
+    justify-content: center;
+    gap: 15px;
+    /* Reset any width that might cause offset */
+    width: 100%; 
+  }
+
+  .logo {
+    /* Ensure the text itself is centered if the container grows */
+    text-align: center;
+    width: 100%; 
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 20px; 
+  }
+
+  .nav-links button {
+    font-size: 0.85rem; 
+  }
+}

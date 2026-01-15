@@ -1,0 +1,77 @@
+/* src/components/Skills/Skills.css */
+.skills-container {
+  max-width: 1000px;
+  margin: 50px auto 100px;
+  padding: 0 20px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.skill-card {
+  background: rgba(22, 27, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+}
+
+.skill-category {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* Slightly increased gap */
+}
+
+.skill-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.skill-icon {
+  display: flex; /* Centers the icon */
+  font-size: 1.1rem; /* Slightly larger icon */
+}
+
+/* Dynamic Hover Effect using the passed variable */
+.skill-tag:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  /* Uses the specific brand color for the border */
+  border-color: var(--hover-color);
+  /* Optional: Adds a faint glow of that color */
+  box-shadow: 0 0 10px var(--hover-color); 
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,139 @@
+.experience-container {
+  max-width: 900px;
+  margin: 100px auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 30px;
+  border-left: 2px solid rgba(59, 130, 246, 0.3);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -36px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+.timeline-content {
+  background: rgba(22, 27, 34, 0.8);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+}
+
+/* --- UPDATED HEADER STYLES --- */
+.timeline-header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between; /* Pushes text left, logo right */
+  align-items: flex-start;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-header h3 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.company {
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.period {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* New Logo Styles */
+.company-logo-link {
+  flex-shrink: 0; /* Prevents logo from squishing */
+  margin-left: 20px;
+}
+
+.company-logo-img {
+  width: 50px;  /* Ensures consistent size */
+  height: 50px; /* Ensures consistent size */
+  object-fit: contain; /* Prevents stretching */
+  
+  /* --- REMOVED THESE LINES ---
+  background: white; 
+  border-radius: 8px;
+  padding: 5px;
+  --------------------------- */
+  
+  transition: transform 0.3s ease;
+  filter: brightness(0.9); /* Optional: slight dim so they aren't too jarring against dark mode */
+}
+
+.company-logo-link:hover .company-logo-img {
+  transform: scale(1.1);
+  filter: brightness(1); /* Brighten on hover */
+}
+
+/* ... mobile styles below ... */
+
+
+.timeline-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.timeline-list li {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 15px;
+  font-size: 0.95rem;
+}
+
+.timeline-list li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+}
+
+/* Mobile fix */
+@media (max-width: 600px) {
+  .timeline-header h3 {
+    font-size: 1.1rem;
+  }
+  .company-logo-img {
+    width: 40px;
+    height: 40px;
+  }
+}

@@ -1,0 +1,77 @@
+/* src/components/Contact/Contact.css */
+.contact-container {
+  max-width: 600px;
+  margin: 150px auto 50px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.contact-text {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+
+/* Container for the two buttons */
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between buttons */
+  flex-wrap: wrap; /* Stacks them on very small screens */
+}
+
+/* Shared Button Styles */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Email Button (Outline Style) */
+.email-btn {
+  color: var(--accent-color);
+  background: transparent;
+  border: 1px solid var(--accent-color);
+}
+
+.email-btn:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* LinkedIn Button (Solid Blue) */
+.linkedin-btn {
+  background-color: #0077b5; /* Official LinkedIn Blue */
+  color: white;
+  border: 1px solid #0077b5;
+  gap: 10px; /* Space between icon and text */
+}
+
+.linkedin-btn:hover {
+  background-color: #005885; /* Darker blue on hover */
+  border-color: #005885;
+}
+
+/* Icon inside the button */
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  filter: invert(1); /* Ensures black icons turn white */
+}
+
+.footer-note {
+  margin-top: 100px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}

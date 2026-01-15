@@ -1,0 +1,81 @@
+/* src/components/Education/Education.css */
+.education-container {
+  max-width: 800px;
+  margin: 100px auto;
+  padding: 0 20px;
+}
+
+.edu-card {
+  background: rgba(22, 27, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.edu-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-5px);
+}
+
+/* --- UPDATED HEADER --- */
+.edu-header {
+  display: flex;
+  justify-content: space-between; /* Pushes text left, logo right */
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.edu-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.edu-header h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0 0 5px 0;
+}
+
+.edu-year {
+  color: var(--text-secondary);
+  font-family: monospace;
+}
+
+/* New Logo Style */
+.edu-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-left: 20px;
+  flex-shrink: 0; /* Prevents squishing */
+  border-radius: 8px; 
+}
+/* ---------------------- */
+
+.degree {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.honors {
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.coursework {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.course-tag {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent-color);
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
