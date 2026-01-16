@@ -15,7 +15,7 @@ export default function Contact() {
       
       <div className="contact-actions">
         {/* Email Button */}
-        <a href="mailto:jovan.milicev@gmail.com" className="btn email-btn">
+        <a href="mailto:contact@jovanmilicev.com" className="btn email-btn">
           Send Email
         </a>
 
