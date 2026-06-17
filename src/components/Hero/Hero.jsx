@@ -106,7 +106,11 @@ export default function Hero() {
 
   /* ── Text scramble on mount (desktop only — avoids mobile reflow) ── */
   useEffect(() => {
-    if (window.matchMedia('(hover: none)').matches) return
+    const isTouch =
+      window.matchMedia('(hover: none)').matches ||
+      window.matchMedia('(pointer: coarse)').matches ||
+      navigator.maxTouchPoints > 0
+    if (isTouch) return
     const DURATION = 1100
     const start = Date.now()
 
