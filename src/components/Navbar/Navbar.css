@@ -87,6 +87,15 @@
 @media (max-width: 768px) {
   .hamburger { display: flex; }
 
+  /* While the menu is open, drop the navbar's backdrop-filter. It creates a
+     containing block that would trap the fixed overlay inside the bar. */
+  .navbar.menu-open {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-color: transparent;
+  }
+
   .nav-links {
     position: fixed;
     inset: 0;
