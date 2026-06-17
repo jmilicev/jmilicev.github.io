@@ -1,88 +1,109 @@
-/* src/components/Navbar/Navbar.css */
 .navbar {
   position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 20px 0;
+  top: 0; width: 100%;
   z-index: 1000;
-  transition: all 0.3s ease;
-  background: transparent;
+  padding: 22px 0;
+  transition: padding 0.4s var(--ease), background 0.4s var(--ease), border-color 0.4s var(--ease);
+  border-bottom: 1px solid transparent;
 }
 
 .navbar.scrolled {
-  background: rgba(15, 17, 21, 0.95);
-  padding: 15px 0;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  backdrop-filter: blur(10px);
+  padding: 14px 0;
+  background: rgba(7, 7, 10, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom-color: var(--border);
 }
 
-.nav-content {
+.nav-inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
-.logo {
-  font-weight: 800;
-  font-size: 1.5rem;
-  cursor: pointer;
-  letter-spacing: -1px;
-  color: var(--text-primary);
-  /* Ensure no margins are pushing it off-center */
-  margin: 0; 
-  line-height: 1;
-}
-
-.nav-links {
-  display: flex;
-  gap: 30px;
-}
-
-.nav-links button {
+/* Logo */
+.nav-logo {
   background: none;
   border: none;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
   cursor: pointer;
-  transition: color 0.3s ease;
-  font-family: var(--font-main);
+  font-family: var(--mono);
+  font-size: 1.05rem;
   font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  padding: 0;
+  transition: color 0.3s;
+}
+.nav-logo:hover { color: var(--text-white); }
+.nav-logo-dot   { color: rgba(255,255,255,0.25); transition: color 0.3s; }
+.nav-logo:hover .nav-logo-dot { color: rgba(255,255,255,0.6); }
+
+/* Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
 }
 
-.nav-links button:hover {
-  color: var(--accent-color);
+.nav-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  padding: 0;
+  transition: color 0.3s;
+}
+.nav-link:hover { color: var(--text-white); }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
 }
 
-/* --- Mobile Fix --- */
+.hamburger span {
+  display: block;
+  width: 22px; height: 1px;
+  background: var(--text-2);
+  transition: transform 0.35s var(--ease), opacity 0.25s, background 0.3s;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); background: var(--text); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); background: var(--text); }
+
+/* Mobile overlay */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 15px 0;
-    background: rgba(15, 17, 21, 0.98); 
-  }
-
-  .nav-content {
-    flex-direction: column;
-    /* Explicitly force horizontal centering */
-    align-items: center; 
-    justify-content: center;
-    gap: 15px;
-    /* Reset any width that might cause offset */
-    width: 100%; 
-  }
-
-  .logo {
-    /* Ensure the text itself is centered if the container grows */
-    text-align: center;
-    width: 100%; 
-  }
+  .hamburger { display: flex; }
 
   .nav-links {
-    width: 100%;
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    flex-direction: column;
     justify-content: center;
-    gap: 20px; 
+    gap: 36px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease);
+    z-index: 999;
   }
 
-  .nav-links button {
-    font-size: 0.85rem; 
+  .nav-links.open { opacity: 1; pointer-events: all; }
+
+  .nav-link {
+    font-size: 13px;
+    letter-spacing: 0.22em;
   }
 }

@@ -1,77 +1,126 @@
-/* src/components/Contact/Contact.css */
-.contact-container {
-  max-width: 600px;
-  margin: 150px auto 50px;
-  text-align: center;
-  padding: 0 20px;
+.ct-section {
+  padding: 140px 0 80px;
+  position: relative;
+  overflow: hidden;
 }
 
-.contact-text {
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  margin-bottom: 40px;
-  line-height: 1.8;
-}
-
-/* Container for the two buttons */
-.contact-actions {
+/* Background grid lines */
+.ct-bg-lines {
+  position: absolute;
+  inset: 0;
   display: flex;
-  justify-content: center;
-  gap: 20px; /* Space between buttons */
-  flex-wrap: wrap; /* Stacks them on very small screens */
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 0;
+  pointer-events: none;
 }
 
-/* Shared Button Styles */
-.btn {
+.ct-bg-line {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  opacity: 0.6;
+}
+
+/* Body */
+.ct-body {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  padding-top: 60px;
+}
+
+.ct-heading {
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-white);
+  line-height: 1.07;
+  margin-bottom: 24px;
+}
+
+.ct-heading-dim { color: var(--text-3); }
+
+.ct-text {
+  font-size: 1rem;
+  color: var(--text-2);
+  line-height: 1.72;
+  max-width: 440px;
+  margin-bottom: 44px;
+}
+
+/* Buttons */
+.ct-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ct-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 30px;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  will-change: transform;
+  transition: background 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.ct-btn--ghost {
+  background: transparent;
+  border: 1px solid var(--border-hover);
+  color: var(--text);
+}
+.ct-btn--ghost:hover {
+  border-color: rgba(255,255,255,0.35);
+  color: var(--text-white);
+  background: rgba(255,255,255,0.025);
+}
+
+.ct-btn--solid {
+  background: var(--text-white);
+  border: 1px solid transparent;
+  color: var(--bg);
+}
+.ct-btn--solid:hover {
+  background: rgba(255,255,255,0.88);
+  box-shadow: 0 0 50px rgba(255,255,255,0.10);
+}
+
+/* Footer */
+.ct-footer {
+  margin-top: 100px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 12px 28px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 1rem;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
+.ct-footer span {
+  font-size: 0.78rem;
+  color: var(--text-3);
 }
 
-/* Email Button (Outline Style) */
-.email-btn {
-  color: var(--accent-color);
-  background: transparent;
-  border: 1px solid var(--accent-color);
+.ct-footer-sep { opacity: 0.35; }
+
+.ct-footer-mono {
+  font-family: var(--mono);
+  font-size: 9px !important;
+  letter-spacing: 0.12em;
 }
 
-.email-btn:hover {
-  background: rgba(59, 130, 246, 0.1);
-}
-
-/* LinkedIn Button (Solid Blue) */
-.linkedin-btn {
-  background-color: #0077b5; /* Official LinkedIn Blue */
-  color: white;
-  border: 1px solid #0077b5;
-  gap: 10px; /* Space between icon and text */
-}
-
-.linkedin-btn:hover {
-  background-color: #005885; /* Darker blue on hover */
-  border-color: #005885;
-}
-
-/* Icon inside the button */
-.btn-icon {
-  width: 20px;
-  height: 20px;
-  filter: invert(1); /* Ensures black icons turn white */
-}
-
-.footer-note {
-  margin-top: 100px;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  opacity: 0.6;
+/* Mobile */
+@media (max-width: 768px) {
+  .ct-section  { padding: 100px 0 60px; }
+  .ct-body     { padding-top: 48px; }
+  .ct-actions  { flex-direction: column; }
+  .ct-btn      { width: 100%; justify-content: center; }
+  .ct-footer   { flex-direction: column; align-items: flex-start; gap: 8px; }
 }

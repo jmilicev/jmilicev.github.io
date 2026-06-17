@@ -1,130 +1,266 @@
-/* src/components/Hero/Hero.css */
-.hero-section {
-  min-height: 100vh;
+.hero {
+  position: relative;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
-  background: radial-gradient(circle at 50% 50%, #1a202c 0%, var(--bg-primary) 70%);
-  padding-top: 80px;
+  overflow: hidden;
+  background: radial-gradient(ellipse 90% 70% at 50% -10%, rgba(28,28,42,0.55) 0%, transparent 65%);
 }
 
-.hero-container {
+/* ── Canvas ───────────────────────────────────── */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+/* ── Fibonacci level lines ────────────────────── */
+.hero-levels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100px 0 60px;
+}
+
+.hero-level-line {
+  position: relative;
+  width: 100%;
+  border-top: 1px dashed rgba(255,255,255,0.045);
+}
+
+.hero-level-pct {
+  position: absolute;
+  right: 48px; top: -8px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: rgba(255,255,255,0.13);
+  background: var(--bg);
+  padding: 0 5px;
+  letter-spacing: 0.08em;
+}
+
+/* ── Layout ───────────────────────────────────── */
+.hero-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 60px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   width: 100%;
-  gap: 50px;
 }
 
-/* --- Left Column: Text --- */
+/* ── Text column ──────────────────────────────── */
 .hero-text {
   flex: 1;
-  max-width: 650px;
+  max-width: 620px;
 }
 
-.greeting {
-  color: var(--accent-color);
-  font-weight: 600;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--text-3);
   text-transform: uppercase;
-  font-size: 0.9rem;
+  margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  animation: fadeUp 0.8s var(--ease-slow) both;
 }
 
-.main-title {
-  font-size: 3.5rem;
+.hero-status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.28);
+  flex-shrink: 0;
+  animation: dot-pulse 2.8s ease infinite;
+}
+
+@keyframes dot-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.15); opacity: 0.28; }
+  50%      { box-shadow: 0 0 0 5px rgba(255,255,255,0);  opacity: 0.7;  }
+}
+
+.hero-title {
+  font-size: clamp(2.1rem, 4.4vw, 3.8rem);
   font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 25px;
-  color: var(--text-primary);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+  font-variant-numeric: tabular-nums;
+  animation: fadeUp 0.8s var(--ease-slow) 0.08s both;
 }
 
-.highlight {
-  background: linear-gradient(to right, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.hero-t1 {
+  display: block;
+  color: var(--text-2);
+  font-size: 0.78em;
+  white-space: pre;
 }
 
-.subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  max-width: 550px;
-  margin-bottom: 40px;
+.hero-t2 {
+  display: block;
+  color: var(--text-white);
+  white-space: pre;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: var(--text-2);
+  line-height: 1.72;
+  max-width: 490px;
+  margin-bottom: 44px;
+  animation: fadeUp 0.8s var(--ease-slow) 0.18s both;
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 28px;
+  animation: fadeUp 0.8s var(--ease-slow) 0.28s both;
 }
 
-.btn-primary {
-  background-color: var(--accent-color);
-  color: white;
-  padding: 12px 32px;
-  border-radius: 8px;
+/* CTA button */
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--text-white);
+  color: var(--bg);
   border: none;
-  font-weight: 600;
-  font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s;
+  font-family: var(--font);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 13px 28px;
+  border-radius: var(--radius);
+  will-change: transform;
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
-.btn-primary:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-2px);
+.hero-cta:hover {
+  background: rgba(255,255,255,0.86);
+  box-shadow: 0 0 50px rgba(255,255,255,0.12);
 }
 
-.social-links {
+.hero-cta svg {
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease);
+}
+.hero-cta:hover svg { transform: translateX(3px); }
+
+/* Socials */
+.hero-socials {
   display: flex;
-  gap: 20px;
+  gap: 18px;
 }
 
-.social-links img {
-  width: 24px;
-  height: 24px;
-  filter: invert(1); 
-  opacity: 0.7;
-  transition: opacity 0.2s;
+.hero-socials a {
+  opacity: 0.38;
+  transition: opacity 0.3s, transform 0.3s var(--ease);
+  display: flex;
+}
+.hero-socials a:hover { opacity: 1; transform: translateY(-3px); }
+
+.hero-socials img {
+  width: 20px; height: 20px;
+  filter: invert(1);
+  display: block;
 }
 
-.social-links img:hover {
-  opacity: 1;
-}
-
-/* --- Right Column: Image --- */
-.hero-image-container {
-  flex: 0 0 auto;
+/* ── Profile image ────────────────────────────── */
+.hero-img-wrap {
+  flex-shrink: 0;
   position: relative;
-  
-  width: 300px;
-  height: 300px;
+  width: 280px; height: 280px;
   border-radius: 50%;
-  border: 4px solid rgba(59, 130, 246, 0.2);
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
-  overflow: hidden; 
-  
-  transition: box-shadow 0.3s ease;
+  will-change: transform;
+  animation: fadeUp 0.9s var(--ease-slow) 0.14s both;
 }
 
-.profile-pic {
-  width: 100%;
-  height: 100%;
+.hero-profile {
+  width: 100%; height: 100%;
+  border-radius: 50%;
   object-fit: cover;
-  
-  /* Desktop Position: This matches what you liked previously */
-  transform: scale(1.15) translate(-11px, 1px);
+  transform: scale(1.14) translate(-10px, 2px);
+  display: block;
+  position: relative;
+  z-index: 1;
 }
 
-.hero-image-container:hover {
-  box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+.hero-ring {
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.07);
+  pointer-events: none;
+  animation: ring-breathe 4s ease-in-out infinite;
+}
+.hero-ring--2 {
+  inset: -22px;
+  border-color: rgba(255,255,255,0.035);
+  animation-delay: -2s;
 }
 
-/* --- Mobile Responsive --- */
-@media (max-width: 968px) {
-  .hero-container {
+@keyframes ring-breathe {
+  0%,100% { opacity: 0.5; transform: scale(1); }
+  50%     { opacity: 1;   transform: scale(1.04); }
+}
+
+/* ── Scroll hint ──────────────────────────────── */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.28;
+  animation: fadeUp 1s var(--ease-slow) 0.9s both;
+  pointer-events: none;
+}
+
+.hero-scroll-line {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.7), transparent);
+  animation: line-bob 2.2s ease-in-out infinite;
+  transform-origin: top;
+}
+
+.hero-scroll-hint span {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+@keyframes line-bob {
+  0%,100% { transform: scaleY(1); }
+  50%     { transform: scaleY(0.45); }
+}
+
+/* ── Entry animation keyframe ─────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Mobile ───────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-inner {
     flex-direction: column-reverse;
     text-align: center;
-    justify-content: center;
+    padding-top: 130px;
     gap: 40px;
   }
 
@@ -134,20 +270,17 @@
     flex-direction: column;
     align-items: center;
   }
-  
-  .main-title {
-    font-size: 2.5rem;
-  }
-  
-  .hero-image-container {
-    width: 200px;
-    height: 200px;
-  }
 
-  /* MOBILE SPECIFIC IMAGE FIX */
-  .profile-pic {
-    /* Adjust these values specifically for the smaller mobile circle */
-    /* Usually on mobile you want less translation because the circle is smaller */
-    transform: scale(1.1) translate(-6px, 5px);
-  }
+  .hero-t1, .hero-t2 { white-space: normal; }
+
+  .hero-sub { text-align: center; max-width: 420px; }
+
+  .hero-img-wrap { width: 180px; height: 180px; }
+
+  .hero-level-pct { right: 24px; }
+}
+
+@media (max-width: 480px) {
+  .hero-cta { padding: 12px 22px; }
+  .hero-actions { gap: 20px; }
 }

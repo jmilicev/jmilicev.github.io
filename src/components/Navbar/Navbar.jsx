@@ -1,36 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import './Navbar.css';
+import { useState, useEffect } from 'react'
+import './Navbar.css'
+
+const NAV_ITEMS = ['home', 'experience', 'skills', 'education', 'contact']
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled]   = useState(false)
+  const [menuOpen, setMenuOpen]   = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const go = (id) => {
+    setMenuOpen(false)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container nav-content">
-        {/* Clicking JM scrolls to top */}
-        <div className="logo" onClick={() => window.scrollTo(0,0)}>JM.</div>
-        <div className="nav-links">
-          <button onClick={() => scrollToSection('home')}>Home</button>
-          <button onClick={() => scrollToSection('experience')}>Experience</button>
-          <button onClick={() => scrollToSection('education')}>Education</button>
-          <button onClick={() => scrollToSection('contact')}>Contact</button>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''}`}>
+      <div className="container nav-inner">
+        <button className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          JM<span className="nav-logo-dot">.</span>
+        </button>
+
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          {NAV_ITEMS.map(id => (
+            <button key={id} onClick={() => go(id)} className="nav-link">
+              {id}
+            </button>
+          ))}
         </div>
+
+        <button
+          className={`hamburger ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Toggle navigation"
+        >
+          <span /><span /><span />
+        </button>
       </div>
     </nav>
-  );
+  )
 }

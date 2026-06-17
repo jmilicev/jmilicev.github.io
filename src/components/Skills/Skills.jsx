@@ -1,85 +1,121 @@
-/* src/components/Skills/Skills.js */
-import React from 'react';
-import './Skills.css';
+import { useEffect, useRef } from 'react'
+import './Skills.css'
+import {
+  SiMysql, SiPython, SiReact, SiJavascript, SiNodedotjs,
+  SiGit, SiMongodb, SiApachespark, SiNextdotjs, SiTableau,
+} from 'react-icons/si'
+import {
+  FaDatabase, FaFileExcel, FaCode, FaCogs,
+  FaChartBar, FaCloud, FaShareAltSquare, FaProjectDiagram,
+} from 'react-icons/fa'
+import { TbApi } from 'react-icons/tb'
 
-// Import specific icons from react-icons
-import { 
-  SiMysql, SiPython, 
-  SiReact, SiJavascript, SiNodedotjs, SiGit, 
-  SiMongodb, SiApachespark, SiNextdotjs, SiTableau 
-} from "react-icons/si";
+const ALL = [
+  { name: 'Power BI',    icon: <FaChartBar /> },
+  { name: 'SQL',         icon: <SiMysql /> },
+  { name: 'DAX',         icon: <FaCode /> },
+  { name: 'M Query',     icon: <FaCogs /> },
+  { name: 'Excel',       icon: <FaFileExcel /> },
+  { name: 'Tableau',     icon: <SiTableau /> },
+  { name: 'MS Fabric',   icon: <FaProjectDiagram /> },
+  { name: 'Azure',       icon: <FaCloud /> },
+  { name: 'Python',      icon: <SiPython /> },
+  { name: 'SharePoint',  icon: <FaShareAltSquare /> },
+  { name: 'Databricks',  icon: <FaDatabase /> },
+  { name: 'Spark',       icon: <SiApachespark /> },
+  { name: 'MongoDB',     icon: <SiMongodb /> },
+  { name: 'React',       icon: <SiReact /> },
+  { name: 'JavaScript',  icon: <SiJavascript /> },
+  { name: 'Node.js',     icon: <SiNodedotjs /> },
+  { name: 'Next.js',     icon: <SiNextdotjs /> },
+  { name: 'Git',         icon: <SiGit /> },
+  { name: 'REST APIs',   icon: <TbApi /> },
+]
 
-// Added FaChartBar, FaCloud, FaShareAltSquare, FaProjectDiagram for the missing icons
-import { 
-  FaDatabase, FaFileExcel, FaCode, FaCogs, 
-  FaChartBar, FaCloud, FaShareAltSquare, FaProjectDiagram 
-} from "react-icons/fa";
+const CATS = [
+  { label: 'Data & Analytics',    names: ['Power BI','SQL','DAX','M Query','Excel','Tableau','MS Fabric'] },
+  { label: 'Engineering & Cloud', names: ['Azure','Python','SharePoint','Databricks','Spark','MongoDB'] },
+  { label: 'Development',         names: ['React','JavaScript','Node.js','Next.js','Git','REST APIs'] },
+]
 
-import { TbApi } from "react-icons/tb";
+const MAP = Object.fromEntries(ALL.map(s => [s.name, s]))
 
-const skillsData = [
-  {
-    category: "Data & Analytics",
-    tools: [
-      { name: "Power BI", icon: <FaChartBar />, color: "#F2C811" }, // Swapped for FaChartBar
-      { name: "SQL", icon: <SiMysql />, color: "#00758F" },
-      { name: "DAX", icon: <FaCode />, color: "#00D1C1" }, 
-      { name: "M Query", icon: <FaCogs />, color: "#A1A1AA" }, 
-      { name: "Excel", icon: <FaFileExcel />, color: "#217346" },
-      { name: "Tableau", icon: <SiTableau />, color: "#E97627" },
-      { name: "MS Fabric", icon: <FaProjectDiagram />, color: "#0078D4" } // Swapped for FaProjectDiagram
-    ]
-  },
-  {
-    category: "Engineering & Cloud",
-    tools: [
-      { name: "Azure", icon: <FaCloud />, color: "#0078D4" }, // Swapped for FaCloud
-      { name: "Python", icon: <SiPython />, color: "#3776AB" },
-      { name: "SharePoint", icon: <FaShareAltSquare />, color: "#0078D4" }, // Swapped for FaShareAltSquare
-      { name: "Databricks", icon: <FaDatabase />, color: "#FF3621" },
-      { name: "Spark", icon: <SiApachespark />, color: "#E25A1C" },
-      { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" }
-    ]
-  },
-  {
-    category: "Development",
-    tools: [
-      { name: "React", icon: <SiReact />, color: "#61DAFB" },
-      { name: "JavaScript", icon: <SiJavascript />, color: "#F7DF1E" },
-      { name: "Node.js", icon: <SiNodedotjs />, color: "#339933" },
-      { name: "Next.js", icon: <SiNextdotjs />, color: "#ffffff" }, 
-      { name: "Git", icon: <SiGit />, color: "#F05032" },
-      { name: "REST APIs", icon: <TbApi />, color: "#A1A1AA" }
-    ]
-  }
-];
+// Duplicate for seamless CSS loop
+const ROW1 = [...ALL, ...ALL]
+const ROW2 = [...ALL.slice(9), ...ALL.slice(0, 9), ...ALL.slice(9), ...ALL.slice(0, 9)]
 
 export default function Skills() {
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const items = sectionRef.current?.querySelectorAll('.sk-item')
+    if (!items) return
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target) }
+      }),
+      { threshold: 0.1 }
+    )
+    items.forEach(el => io.observe(el))
+    return () => io.disconnect()
+  }, [])
+
   return (
-    <div className="skills-container">
-      <h2 className="section-title">Technical Toolkit</h2>
-      
-      <div className="skills-grid">
-        {skillsData.map((group, index) => (
-          <div key={index} className="skill-card">
-            <h3 className="skill-category">{group.category}</h3>
-            <div className="skill-tags">
-              {group.tools.map((tool, i) => (
-                <div 
-                  key={i} 
-                  className="skill-tag" 
-                  style={{ '--hover-color': tool.color }} 
-                >
-                  <span className="skill-icon" style={{ color: tool.color }}>
-                    {tool.icon}
-                  </span>
-                  {tool.name}
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+    <section className="sk-section" ref={sectionRef}>
+
+      {/* Ticker rows */}
+      <div className="ticker-wrap">
+        <div className="ticker ticker--fwd">
+          {ROW1.map((s, i) => (
+            <span key={i} className="ticker-item">
+              <span className="ticker-icon" aria-hidden="true">{s.icon}</span>
+              {s.name}
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+
+      <div className="ticker-wrap ticker-wrap--gap">
+        <div className="ticker ticker--rev">
+          {ROW2.map((s, i) => (
+            <span key={i} className="ticker-item">
+              <span className="ticker-icon" aria-hidden="true">{s.icon}</span>
+              {s.name}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Categorised grid */}
+      <div className="container">
+        <div className="reveal">
+          <p className="section-eyebrow"><span>02</span> Skills</p>
+          <h2 className="sk-heading">Technical Toolkit</h2>
+        </div>
+
+        <div className="sk-grid">
+          {CATS.map((cat, ci) => (
+            <div key={ci} className="sk-cat reveal" style={{ '--delay': `${ci * 90}ms` }}>
+              <h3 className="sk-cat-label">{cat.label}</h3>
+              <div className="sk-items">
+                {cat.names.map((name, si) => {
+                  const s = MAP[name]
+                  return (
+                    <div
+                      key={si}
+                      className="sk-item"
+                      style={{ '--delay': `${ci * 80 + si * 45}ms` }}
+                    >
+                      <span className="sk-icon" aria-hidden="true">{s?.icon}</span>
+                      <span className="sk-name">{name}</span>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }
