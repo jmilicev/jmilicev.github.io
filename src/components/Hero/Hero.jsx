@@ -104,8 +104,9 @@ export default function Hero() {
     return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize) }
   }, [])
 
-  /* ── Text scramble on mount ───────────────────────────────── */
+  /* ── Text scramble on mount (desktop only — avoids mobile reflow) ── */
   useEffect(() => {
+    if (window.matchMedia('(hover: none)').matches) return
     const DURATION = 1100
     const start = Date.now()
 
@@ -190,7 +191,6 @@ export default function Hero() {
         <div className="hero-text">
           <h1 className="hero-title">
             <span className="hero-t1">{t1}</span>
-            <br />
             <span className="hero-t2">{t2}</span>
           </h1>
 
@@ -226,7 +226,17 @@ export default function Hero() {
 
         {/* Profile image */}
         <div className="hero-img-wrap" ref={imgWrapRef}>
-          <img src={profilePic} alt="Jovan Milicev" className="hero-profile" />
+          <div className="hero-img-inner">
+            <img src={profilePic} alt="Jovan Milicev" className="hero-profile" />
+            <div className="hero-img-scan" aria-hidden="true" />
+            <div className="hero-img-overlay" aria-hidden="true">
+              <span className="hero-img-label">JM_01</span>
+            </div>
+          </div>
+          <div className="hero-bracket hero-bracket--tl" aria-hidden="true" />
+          <div className="hero-bracket hero-bracket--tr" aria-hidden="true" />
+          <div className="hero-bracket hero-bracket--bl" aria-hidden="true" />
+          <div className="hero-bracket hero-bracket--br" aria-hidden="true" />
           <div className="hero-ring" aria-hidden="true" />
           <div className="hero-ring hero-ring--2" aria-hidden="true" />
         </div>
