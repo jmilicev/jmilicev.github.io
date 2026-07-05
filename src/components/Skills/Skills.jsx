@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import './Skills.css'
 import MaskedHeading from '../shared/MaskedHeading'
 import CountUp from '../shared/CountUp'
+import { runSQL } from '../shared/sql'
 import {
   SiMysql, SiPython, SiReact, SiJavascript, SiNodedotjs,
   SiGit, SiMongodb, SiApachespark, SiNextdotjs, SiTableau,
@@ -70,21 +71,27 @@ const BARS = [
 
 ]
 
-/* "Learning curve" career chart: school + every role in sequence, 2018 → now */
-const CW = 260, CHH = 118, PL = 8, PR = 10, PT = 16, PB = 22
+/* "Learning curve" career chart: school + every role in sequence, 2018 → now.
+   Curve on top, tenure lanes (start → end bars, one colour per item) above the x-axis. */
+const CW = 300, CHH = 152, PL = 8, PR = 10
+const PT = 12, PLOT_B = 96                 /* curve plot area */
+const LANE_TOP = 104, LANE_H = 5, LANE_GAP = 3
+const AXIS_Y = 130
 const YR0 = 2018, YR1 = 2026.7
 const chartX = (yr) => PL + ((yr - YR0) / (YR1 - YR0)) * (CW - PL - PR)
-const chartY = (v)  => PT + (1 - v / 100) * (CHH - PT - PB)
+const chartY = (v)  => PT + (1 - v / 100) * (PLOT_B - PT)
+const laneY  = (lane) => LANE_TOP + lane * (LANE_H + LANE_GAP)
 
-// Sorted in strict chronological order so the legend reflects the exact timeline
+// Chronological. `from`/`to` are fractional years for the tenure lane bars;
+// overlapping items sit on separate lanes so every start/end stays readable.
 const MILESTONES = [
-  { yr: 2018.7,  v: 8,  code: 'YU',  color: '#c084fc', label: 'York University — CS' },
-  { yr: 2022.2,  v: 26, code: 'BNS', color: '#ec4899', label: 'CEA - Scotiabank' }, 
-  { yr: 2022.75, v: 36, code: 'TA',  color: '#fbbf24', label: 'Teaching Asst — York' },
-  { yr: 2023.6,  v: 46, code: 'CB',  color: '#1249a7', label: 'Chatbase — Full Stack' },
-  { yr: 2024.0,  v: 54, code: 'PA',  color: '#16a34a', label: 'Proc. Analyst — Metrolinx' },
-  { yr: 2024.9,  v: 70, code: 'BI',  color: '#38bdf8', label: 'BI Analyst — Metrolinx' }, 
-  { yr: 2025.6,  v: 86, code: 'SR',  color: '#ef4444', label: 'Sr. Specialist — Metrolinx' },
+  { yr: 2018.7,  v: 8,  code: 'YU',  color: '#c084fc', label: 'York University — CS',        from: 2018.7,  to: 2023.4,  lane: 0, period: '2018 – 2023' },
+  { yr: 2022.2,  v: 26, code: 'BNS', color: '#fbbf24', label: 'CEA - Scotiabank',            from: 2022.3,  to: 2024.05, lane: 1, period: 'Apr 2022 – Jan 2024' },
+  { yr: 2022.75, v: 36, code: 'TA',  color: '#ec4899', label: 'Teaching Asst — York',        from: 2022.7,  to: 2023.05, lane: 2, period: 'Sept 2022 – Jan 2023' },
+  { yr: 2023.6,  v: 46, code: 'CB',  color: '#1249a7', label: 'Chatbase — Full Stack',       from: 2023.35, to: 2023.7,  lane: 2, period: 'May 2023 – Sept 2023' },
+  { yr: 2024.05, v: 54, code: 'PA',  color: '#16a34a', label: 'Proc. Analyst — Metrolinx',   from: 2024.05, to: 2024.83, lane: 0, period: 'Jan 2024 – Nov 2024' },
+  { yr: 2024.9,  v: 70, code: 'BI',  color: '#38bdf8', label: 'BI Analyst — Metrolinx',      from: 2024.87, to: 2025.42, lane: 0, period: 'Nov 2024 – June 2025' },
+  { yr: 2025.6,  v: 86, code: 'SR',  color: '#ef4444', label: 'Sr. Specialist — Metrolinx',  from: 2025.46, to: 2026.55, lane: 0, period: 'June 2025 – present' },
 ]
 
 const AXIS_YEARS = [2018, 2020, 2022, 2024, 2026]
@@ -94,10 +101,67 @@ const careerPath = (() => {
   return 'M' + pts.map(p => `${chartX(p.yr).toFixed(1)},${chartY(p.v).toFixed(1)}`).join(' L')
 })()
 
+/* One-dark style syntax highlighting for the footer console */
+function highlightSQL(text) {
+  const parts = text.split(/('[^']*'?|"[^"]*"?|\b(?:select|from|where|order|by|limit|show|tables|describe|desc|like|and|or|true|false|drop|delete|update|insert|create|alter|help)\b|\d+)/gi)
+  return parts.map((p, i) => {
+    if (!p) return null
+    const w = p.toLowerCase()
+    if (/^['"]/.test(p))               return <span key={i} className="dash-tok-str">{p}</span>
+    if (/^\d+$/.test(p))               return <span key={i} className="dash-tok-num">{p}</span>
+    if (w === 'true' || w === 'false') return <span key={i} className="dash-tok-bool">{p}</span>
+    if (['select', 'show', 'describe', 'desc', 'help', 'drop', 'delete', 'update', 'insert', 'create', 'alter'].includes(w))
+                                       return <span key={i} className="dash-tok-kw1">{p}</span>
+    if (w === 'from' || w === 'tables') return <span key={i} className="dash-tok-kw2">{p}</span>
+    if (['where', 'order', 'by', 'limit', 'like', 'and', 'or'].includes(w))
+                                       return <span key={i} className="dash-tok-kw3">{p}</span>
+    return p
+  })
+}
+
+const DEFAULT_SQL = 'SELECT insight FROM insights WHERE useful = TRUE'
+
 function Dashboard() {
   const ref = useRef(null)
   const [live, setLive] = useState(false)
   const [hovered, setHovered] = useState(null)
+  const [sqlText, setSqlText]       = useState(DEFAULT_SQL)
+  const [sqlOut, setSqlOut]         = useState(null)
+  const [sqlFocused, setSqlFocused] = useState(false)
+
+  const runFooterSQL = () => setSqlOut(runSQL(sqlText))
+
+  const onSqlKey = (e) => {
+    if (e.key === 'Enter') runFooterSQL()
+    if (e.key === 'Escape') {
+      setSqlOut(null)
+      setSqlText(DEFAULT_SQL)
+      e.target.blur()
+    }
+  }
+
+  /* macOS-style window controls: red closes, yellow minimizes, green restores */
+  const [winState, setWinState] = useState('open')   /* 'open' | 'min' | 'closed' */
+  const [jiggle, setJiggle]     = useState(false)
+  const [booting, setBooting]   = useState(false)
+
+  const onGreen = () => {
+    if (winState === 'open') {
+      setJiggle(true)
+      setTimeout(() => setJiggle(false), 750)
+    } else {
+      setWinState('open')
+    }
+  }
+
+  /* Relaunch: mount collapsed + fading in, then expand on the next frame
+     so it plays the same smooth animation as un-minimizing */
+  const relaunch = () => {
+    setBooting(true)
+    setWinState('min')
+    requestAnimationFrame(() => requestAnimationFrame(() => setWinState('open')))
+    setTimeout(() => setBooting(false), 700)
+  }
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -110,15 +174,33 @@ function Dashboard() {
     return () => io.disconnect()
   }, [])
 
+  if (winState === 'closed') {
+    return (
+      <div ref={ref}>
+        <button className="dash-restore" onClick={relaunch}>
+          <span className="dash-restore-dot" aria-hidden="true" />
+          jm_analytics_console terminated — click to relaunch
+        </button>
+      </div>
+    )
+  }
+
   return (
-    <div className={`dash spotlight ${live ? 'dash-live' : ''}`} ref={ref}>
-      {/* Titlebar */}
+    <div ref={ref}>
+    <div className={`dash spotlight ${live ? 'dash-live' : ''} ${winState === 'min' ? 'dash-min' : ''} ${jiggle ? 'dash-jiggle' : ''} ${booting ? 'dash-boot' : ''}`}>
+      {/* Titlebar — the traffic lights actually work */}
       <div className="dash-titlebar">
-        <div className="dash-dots" aria-hidden="true"><span /><span /><span /></div>
+        <div className="dash-dots">
+          <button className="dash-dot dash-dot--red"    onClick={() => setWinState('closed')} aria-label="Close console"    title="close" />
+          <button className="dash-dot dash-dot--yellow" onClick={() => setWinState('min')}    aria-label="Minimize console" title="minimize" />
+          <button className="dash-dot dash-dot--green"  onClick={onGreen}                     aria-label="Expand console"   title="expand" />
+        </div>
         <span className="dash-title">JM_ANALYTICS_CONSOLE — v3.1</span>
         <span className="dash-status"><span className="dash-status-dot" aria-hidden="true" />live</span>
       </div>
 
+      <div className="dash-collapse">
+      <div className="dash-collapse-inner">
       <div className="dash-body">
         {/* KPI cards */}
         <div className="dash-kpis">
@@ -136,17 +218,17 @@ function Dashboard() {
           {/* Career line chart (Now first, taking up the 1.4fr larger column) */}
           <div className="dash-panel">
             <p className="dash-panel-label">learning_curve — 2018 → now</p>
-            <svg className="dash-chart" viewBox={`0 0 ${CW} ${CHH}`} aria-hidden="true">
+            <svg className="dash-chart" viewBox={`0 0 ${CW} ${CHH}`} role="img" aria-label="Career timeline chart, 2018 to now">
               {/* x-axis */}
-              <line className="dash-axis" x1={PL} y1={CHH - PB} x2={CW - PR} y2={CHH - PB} />
+              <line className="dash-axis" x1={PL} y1={AXIS_Y} x2={CW - PR} y2={AXIS_Y} />
               {AXIS_YEARS.map(yr => (
                 <g key={yr}>
-                  <line className="dash-tick" x1={chartX(yr)} y1={CHH - PB} x2={chartX(yr)} y2={CHH - PB + 3} />
-                  <text className="dash-tick-label" x={chartX(yr)} y={CHH - 7}>{yr}</text>
+                  <line className="dash-tick" x1={chartX(yr)} y1={AXIS_Y} x2={chartX(yr)} y2={AXIS_Y + 3} />
+                  <text className="dash-tick-label" x={chartX(yr)} y={CHH - 8}>{yr}</text>
                 </g>
               ))}
 
-              <path className="dash-spark-fill" d={`${careerPath} L${chartX(2026.5)},${CHH - PB} L${chartX(2018.2)},${CHH - PB} Z`} />
+              <path className="dash-spark-fill" d={`${careerPath} L${chartX(2026.5)},${PLOT_B} L${chartX(2018.2)},${PLOT_B} Z`} />
               <path className="dash-spark-line" d={careerPath} />
 
               {/* milestone markers, labels alternate above/below the line */}
@@ -161,6 +243,23 @@ function Dashboard() {
                     textAnchor="middle"
                   >{m.code}</text>
                 </g>
+              ))}
+
+              {/* tenure lanes: each bar spans start → end in the item's colour */}
+              {MILESTONES.map((m, i) => (
+                <rect
+                  key={`span-${m.code}`}
+                  className="dash-span"
+                  x={chartX(m.from)}
+                  y={laneY(m.lane)}
+                  width={Math.max(2, chartX(m.to) - chartX(m.from))}
+                  height={LANE_H}
+                  rx="2.5"
+                  fill={m.color}
+                  style={{ transitionDelay: `${900 + i * 120}ms` }}
+                >
+                  <title>{`${m.code} — ${m.period}`}</title>
+                </rect>
               ))}
             </svg>
 
@@ -184,6 +283,7 @@ function Dashboard() {
                 <div
                   key={b.name}
                   className={`dash-bar-row ${hovered === b.name ? 'hot' : ''}`}
+                  style={{ '--bar-color': b.color }}
                   onMouseEnter={() => setHovered(b.name)}
                   onMouseLeave={() => setHovered(null)}
                 >
@@ -191,11 +291,7 @@ function Dashboard() {
                   <div className="dash-bar-track">
                     <div
                       className="dash-bar-fill"
-                      style={{ 
-                        '--bar-color': b.color,
-                        width: live ? `${b.val}%` : '0%', 
-                        transitionDelay: `${200 + i * 110}ms` 
-                      }}
+                      style={{ width: live ? `${b.val}%` : '0%', transitionDelay: `${200 + i * 110}ms` }}
                     />
                   </div>
                   <span className="dash-bar-val">{b.val}</span>
@@ -206,14 +302,69 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Console footer */}
+      {/* Console footer — a real, runnable SQL prompt */}
       <div className="dash-footer">
-        <span className="dash-query">
-          <span className="dash-kw-select">SELECT</span> insight <span className="dash-kw-from">FROM</span> experience{' '}
-          <span className="dash-kw-where">WHERE</span> useful = <span className="dash-true">TRUE</span>;
-        </span>
-        <span className="dash-caret" aria-hidden="true" />
+        <span className="dash-prompt" aria-hidden="true">&gt;</span>
+        <div className="dash-sql-wrap">
+          <div className="dash-sql-hl" aria-hidden="true">
+            {highlightSQL(sqlText)}
+            {!sqlFocused && <span className="dash-caret" />}
+          </div>
+          <input
+            className="dash-sql-input"
+            type="text"
+            value={sqlText}
+            onChange={(e) => setSqlText(e.target.value)}
+            onKeyDown={onSqlKey}
+            onFocus={() => setSqlFocused(true)}
+            onBlur={() => setSqlFocused(false)}
+            spellCheck="false"
+            aria-label="SQL console — press Enter to run"
+          />
+        </div>
+        <button className="dash-run" onClick={runFooterSQL}>run ↵</button>
       </div>
+
+      {/* Query results */}
+      {sqlOut && (
+        <div className="dash-sql-result">
+          <button
+            className="dash-sql-clear"
+            onClick={() => { setSqlOut(null); setSqlText(DEFAULT_SQL) }}
+          >clear ✕</button>
+
+          {sqlOut.type === 'error' && <div className="dash-sql-error">{sqlOut.message}</div>}
+
+          {sqlOut.type === 'text' && sqlOut.lines.map((l, i) => (
+            <div key={i} className="dash-sql-line">{l}</div>
+          ))}
+
+          {sqlOut.type === 'table' && (
+            <>
+              {sqlOut.rows.length === 0
+                ? <div className="dash-sql-error">0 rows returned</div>
+                : (
+                  <div className="dash-table-wrap">
+                    <table className="dash-table">
+                      <thead>
+                        <tr>{sqlOut.cols.map(c => <th key={c}>{c}</th>)}</tr>
+                      </thead>
+                      <tbody>
+                        {sqlOut.rows.map((r, i) => (
+                          <tr key={i}>{r.map((cell, j) => <td key={j}>{cell}</td>)}</tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              {sqlOut.note && <div className="dash-sql-note">{sqlOut.note}</div>}
+            </>
+          )}
+        </div>
+      )}
+      </div>{/* /dash-collapse-inner */}
+      </div>{/* /dash-collapse */}
+    </div>
     </div>
   )
 }

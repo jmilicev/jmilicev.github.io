@@ -108,11 +108,7 @@
 .hero-t2 {
   display: block;
   white-space: pre;
-  background: linear-gradient(100deg, #ffffff 50%, var(--accent) 120%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: var(--text-white);
 }
 
 .hero-sub {

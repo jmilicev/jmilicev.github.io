@@ -119,34 +119,62 @@ export default function Hero() {
           p: dir > 0 ? -110 : (horiz ? W : H) + 110,
           speed: 130 + Math.random() * 170,
           tinted: Math.random() < 0.55,
+          off: 0, voff: 0, boost: 0,   /* mouse-repulsion state */
+          trail: [],
         })
       }
 
+      const PULSE_R = 150, TRAIL = 95
       pulses = pulses.filter(pu => {
-        pu.p += pu.dir * pu.speed * dt
+        /* the cursor repels the pulse like a same-pole magnet: force ramps
+           up the closer it gets, shoving the head off its lane and along
+           (or against) its direction of travel */
+        const hx = pu.horiz ? pu.p : pu.lane + pu.off
+        const hy = pu.horiz ? pu.lane + pu.off : pu.p
+        const mdx = hx - mouse.x, mdy = hy - mouse.y
+        const md2 = mdx * mdx + mdy * mdy
+        if (md2 < PULSE_R * PULSE_R) {
+          const d = Math.sqrt(md2) || 1
+          const f = ((PULSE_R - d) / PULSE_R) ** 2 * 3600
+          pu.boost += ((pu.horiz ? mdx : mdy) / d) * f * dt
+          pu.voff  += ((pu.horiz ? mdy : mdx) / d) * f * dt
+        }
+        /* spring back to the lane and bleed off speed once the cursor lets go */
+        pu.voff  -= pu.off * 6 * dt
+        pu.voff  *= Math.max(0, 1 - 3.5 * dt)
+        pu.off   += pu.voff * dt
+        pu.boost *= Math.max(0, 1 - 2.2 * dt)
+
+        pu.p += (pu.dir * pu.speed + pu.boost) * dt
         const limit = pu.horiz ? W : H
         if (pu.p < -160 || pu.p > limit + 160) return false
 
-        const TRAIL = 95
-        const tail = pu.p - pu.dir * TRAIL
+        /* trail follows the head's actual (possibly bent) path */
+        const nx = pu.horiz ? pu.p : pu.lane + pu.off
+        const ny = pu.horiz ? pu.lane + pu.off : pu.p
+        pu.trail.push({ x: nx, y: ny })
+        if (pu.trail.length > 80) pu.trail.shift()
+        let len = 0
+        for (let i = pu.trail.length - 1; i > 0; i--) {
+          len += Math.hypot(pu.trail[i].x - pu.trail[i - 1].x, pu.trail[i].y - pu.trail[i - 1].y)
+          if (len > TRAIL) { pu.trail.splice(0, i - 1); break }
+        }
+
         const [r, g, b] = pu.tinted ? [74, 222, 128] : [255, 255, 255]
-        const grad = pu.horiz
-          ? ctx.createLinearGradient(tail, pu.lane, pu.p, pu.lane)
-          : ctx.createLinearGradient(pu.lane, tail, pu.lane, pu.p)
-        grad.addColorStop(0, `rgba(${r},${g},${b},0)`)
-        grad.addColorStop(1, `rgba(${r},${g},${b},${pu.tinted ? 0.4 : 0.3})`)
-        ctx.strokeStyle = grad
+        const maxA = pu.tinted ? 0.4 : 0.3
         ctx.lineWidth = 1
-        ctx.beginPath()
-        if (pu.horiz) { ctx.moveTo(tail, pu.lane); ctx.lineTo(pu.p, pu.lane) }
-        else          { ctx.moveTo(pu.lane, tail); ctx.lineTo(pu.lane, pu.p) }
-        ctx.stroke()
+        for (let i = 1; i < pu.trail.length; i++) {
+          ctx.strokeStyle = `rgba(${r},${g},${b},${((i / pu.trail.length) * maxA).toFixed(3)})`
+          ctx.beginPath()
+          ctx.moveTo(pu.trail[i - 1].x, pu.trail[i - 1].y)
+          ctx.lineTo(pu.trail[i].x, pu.trail[i].y)
+          ctx.stroke()
+        }
 
         /* glowing head */
         ctx.fillStyle = `rgba(${r},${g},${b},${pu.tinted ? 0.85 : 0.6})`
         ctx.beginPath()
-        if (pu.horiz) ctx.arc(pu.p, pu.lane, 1.4, 0, Math.PI * 2)
-        else          ctx.arc(pu.lane, pu.p, 1.4, 0, Math.PI * 2)
+        ctx.arc(nx, ny, 1.4, 0, Math.PI * 2)
         ctx.fill()
         return true
       })

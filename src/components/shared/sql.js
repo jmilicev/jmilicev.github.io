@@ -44,6 +44,19 @@ export const DB = {
       ['status', 'refill_required'],
     ],
   },
+  insights: {
+    cols: ['insight', 'useful'],
+    rows: [
+      ['data beats opinions', 'true'],
+      ['automate the boring stuff', 'true'],
+      ['keep dashboards simple', 'true'],
+      ['ask why before asking what', 'true'],
+      ['garbage in, garbage out', 'true'],
+      ['3d pie charts', 'false'],
+      ['more KPIs = more clarity', 'false'],
+      ['gut feel > data', 'false'],
+    ],
+  },
 }
 
 export const HELP_LINES = [
@@ -63,16 +76,6 @@ export function runSQL(raw) {
 
   if (/^help$/i.test(q) || /^select\s*$/i.test(q)) {
     return { type: 'text', lines: HELP_LINES }
-  }
-
-  /* the default footer query gets a hand-curated answer */
-  if (/^select\s+insight\s+from\s+experience\s+where\s+useful\s*=\s*true$/i.test(q)) {
-    return {
-      type: 'table',
-      cols: ['insight'],
-      rows: [['data beats opinions'], ['automate the boring stuff'], ['keep dashboards simple']],
-      note: '3 rows in set (0.001s) — hand-curated',
-    }
   }
 
   if (/^show\s+tables$/i.test(q)) {
