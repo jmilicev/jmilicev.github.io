@@ -45,7 +45,7 @@ const jobs = [
     company: 'Metrolinx',
     url: 'https://www.metrolinx.com/en',
     logo: metrolinxLogo,
-    period: 'Jan 2023 – Nov 2024',
+    period: 'Jan 2024 – Nov 2024',
     bullets: [
       'Developed Power BI dashboards tracking procurement activities — requisitions, purchase orders, and tenders — to enable data-driven decisions.',
       'Prepared detailed reports for government agencies including MTO and Supply Ontario.',

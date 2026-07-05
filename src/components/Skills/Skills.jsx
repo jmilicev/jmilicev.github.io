@@ -55,12 +55,21 @@ const KPIS = [
 ]
 
 const BARS = [
-  { name: 'Power BI', val: 90 },
-  { name: 'Excel',    val: 78 },
-  { name: 'SQL',      val: 71 },
-  { name: 'DAX',      val: 62 },
-  { name: 'Azure',    val: 47 },
-  { name: 'Python',   val: 35 },
+  { name: 'Power BI',    val: 98, color: '#F2C811' },
+  { name: 'SQL',         val: 96, color: '#4CA6E8' },
+  { name: 'DAX',         val: 94, color: '#4ade80' },
+  { name: 'M Query',      val: 92, color: '#5B9BD5' },
+  { name: 'Excel',       val: 90, color: '#3DBE71' },
+  { name: 'PwrAutomate',         val: 90, color: '#F05033' },
+  { name: 'Azure',       val: 88, color: '#38A9F0' },
+  { name: 'Python',     val: 86, color: '#9CA8FF' },
+  { name: 'Databricks',  val: 84, color: '#FF5F46' },
+  { name: 'MS Fabric',   val: 82, color: '#4FC3F7' },
+  { name: 'SharePoint',       val: 80, color: '#E8722A' },
+  { name: 'JavaScript',   val: 76, color: '#7DD3FC' },
+  { name: 'Node.js',     val: 76, color: '#6CC24A' },
+  { name: 'React / Vue', val: 70, color: '#61DAFB' },
+
 ]
 
 /* "Learning curve" career chart: school + every role in sequence, 2018 → now */
@@ -69,14 +78,15 @@ const YR0 = 2018, YR1 = 2026.7
 const chartX = (yr) => PL + ((yr - YR0) / (YR1 - YR0)) * (CW - PL - PR)
 const chartY = (v)  => PT + (1 - v / 100) * (CHH - PT - PB)
 
+// Sorted in strict chronological order so the legend reflects the exact timeline
 const MILESTONES = [
   { yr: 2018.7,  v: 8,  code: 'YU',  color: '#c084fc', label: 'York University — CS' },
-  { yr: 2022.2,  v: 26, code: 'BNS', color: '#f87171', label: 'Scotiabank' },
+  { yr: 2022.2,  v: 26, code: 'BNS', color: '#ec4899', label: 'CEA - Scotiabank' }, 
   { yr: 2022.75, v: 36, code: 'TA',  color: '#fbbf24', label: 'Teaching Asst — York' },
-  { yr: 2023.15, v: 46, code: 'PA',  color: '#16a34a', label: 'Procurement — Metrolinx' },
-  { yr: 2023.6,  v: 54, code: 'CB',  color: '#38bdf8', label: 'Chatbase — Full Stack' },
-  { yr: 2024.9,  v: 70, code: 'BI',  color: '#4ade80', label: 'BI Analyst — Metrolinx' },
-  { yr: 2025.6,  v: 86, code: 'SR',  color: '#bbf7d0', label: 'Senior Spec — Metrolinx' },
+  { yr: 2023.6,  v: 46, code: 'CB',  color: '#38bdf8', label: 'Chatbase — Full Stack' },
+  { yr: 2024.0,  v: 54, code: 'PA',  color: '#16a34a', label: 'Proc. Analyst — Metrolinx' },
+  { yr: 2024.9,  v: 70, code: 'BI',  color: '#06b6d4', label: 'BI Analyst — Metrolinx' }, 
+  { yr: 2025.6,  v: 86, code: 'SR',  color: '#ef4444', label: 'Sr. Specialist — Metrolinx' },
 ]
 
 const AXIS_YEARS = [2018, 2020, 2022, 2024, 2026]
@@ -125,31 +135,7 @@ function Dashboard() {
         </div>
 
         <div className="dash-panels">
-          {/* Relative tool usage bars */}
-          <div className="dash-panel">
-            <p className="dash-panel-label">where_the_hours_go</p>
-            <div className="dash-bars">
-              {BARS.map((b, i) => (
-                <div
-                  key={b.name}
-                  className={`dash-bar-row ${hovered === b.name ? 'hot' : ''}`}
-                  onMouseEnter={() => setHovered(b.name)}
-                  onMouseLeave={() => setHovered(null)}
-                >
-                  <span className="dash-bar-name">{b.name}</span>
-                  <div className="dash-bar-track">
-                    <div
-                      className="dash-bar-fill"
-                      style={{ width: live ? `${b.val}%` : '0%', transitionDelay: `${200 + i * 110}ms` }}
-                    />
-                  </div>
-                  <span className="dash-bar-val">{b.val}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Career line chart */}
+          {/* Career line chart (Now first, taking up the 1.4fr larger column) */}
           <div className="dash-panel">
             <p className="dash-panel-label">learning_curve — 2018 → now</p>
             <svg className="dash-chart" viewBox={`0 0 ${CW} ${CHH}`} aria-hidden="true">
@@ -191,14 +177,42 @@ function Dashboard() {
               ))}
             </div>
           </div>
+
+          {/* Relative tool usage bars (Now second, taking up the 1fr smaller column) */}
+          <div className="dash-panel">
+            <p className="dash-panel-label">where_the_hours_go</p>
+            <div className="dash-bars">
+              {BARS.map((b, i) => (
+                <div
+                  key={b.name}
+                  className={`dash-bar-row ${hovered === b.name ? 'hot' : ''}`}
+                  onMouseEnter={() => setHovered(b.name)}
+                  onMouseLeave={() => setHovered(null)}
+                >
+                  <span className="dash-bar-name">{b.name}</span>
+                  <div className="dash-bar-track">
+                    <div
+                      className="dash-bar-fill"
+                      style={{ 
+                        '--bar-color': b.color,
+                        width: live ? `${b.val}%` : '0%', 
+                        transitionDelay: `${200 + i * 110}ms` 
+                      }}
+                    />
+                  </div>
+                  <span className="dash-bar-val">{b.val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Console footer */}
       <div className="dash-footer">
         <span className="dash-query">
-          <span className="dash-kw">SELECT</span> insight <span className="dash-kw">FROM</span> experience{' '}
-          <span className="dash-kw">WHERE</span> useful = <span className="dash-true">TRUE</span>;
+          <span className="dash-kw-select">SELECT</span> insight <span className="dash-kw-from">FROM</span> experience{' '}
+          <span className="dash-kw-where">WHERE</span> useful = <span className="dash-true">TRUE</span>;
         </span>
         <span className="dash-caret" aria-hidden="true" />
       </div>

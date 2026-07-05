@@ -211,7 +211,7 @@
 .dash-bar-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, rgba(22,163,74,0.6), var(--accent));
+  background: var(--bar-color, var(--accent));
   border-radius: 3px;
   transition: width 1.2s var(--ease-slow), background 0.25s, box-shadow 0.25s;
 }
@@ -226,10 +226,10 @@
 }
 
 .dash-bar-row.hot .dash-bar-name { color: var(--text-white); }
-.dash-bar-row.hot .dash-bar-val  { color: var(--accent); }
+.dash-bar-row.hot .dash-bar-val  { color: var(--bar-color, var(--accent)); }
 .dash-bar-row.hot .dash-bar-fill {
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent-glow);
+  background: var(--bar-color, var(--accent));
+  box-shadow: 0 0 12px var(--bar-color, var(--accent-glow));
 }
 
 /* Career line chart */
@@ -283,11 +283,12 @@
 .dash-live .dash-spark-fill { opacity: 1; }
 .dash-live .dash-ms         { opacity: 1; }
 
-/* Legend */
+/* Legend - Changed from Grid to Flexbox to prevent overlap */
 .dash-legend {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
-  gap: 6px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 8px;
   margin-top: 14px;
   padding-top: 12px;
   border-top: 1px solid var(--border);
@@ -342,8 +343,11 @@
   white-space: nowrap;
 }
 
-.dash-kw   { color: var(--accent-2); }
-.dash-true { color: var(--green); }
+/* Syntax highlighted SQL joke */
+.dash-kw-select { color: #c678dd; } /* Purple */
+.dash-kw-from   { color: #61afef; } /* Blue */
+.dash-kw-where  { color: #e5c07b; } /* Yellow */
+.dash-true      { color: #98c379; } /* Green */
 
 .dash-caret {
   width: 6px; height: 12px;

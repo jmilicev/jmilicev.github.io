@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-:root {
+:root { 
   --bg:    #07070a;
   --bg-2:  #0c0c10;
   --bg-3:  #111116;
@@ -180,9 +180,9 @@ body {
   border-radius: inherit;
   background: radial-gradient(
     380px circle at var(--mx, -300px) var(--my, -300px),
-    rgba(160,255,200,0.055),
+    rgba(255, 255, 255, 0.055),
     transparent 65%
-  );
+);
   opacity: 0;
   transition: opacity 0.45s var(--ease);
   pointer-events: none;
