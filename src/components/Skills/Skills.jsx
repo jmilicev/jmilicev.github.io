@@ -60,7 +60,7 @@ const BARS = [
   { name: 'DAX',         val: 94, color: '#4ade80' },
   { name: 'M Query',      val: 92, color: '#5B9BD5' },
   { name: 'Excel',       val: 90, color: '#3DBE71' },
-  { name: 'Azure',       val: 88, color: '#38A9F0' },
+  { name: 'Azure',       val: 88, color: '#1249a7' },
   { name: 'Python',     val: 86, color: '#9CA8FF' },
   { name: 'Databricks',  val: 84, color: '#FF5F46' },
   { name: 'MS Fabric',   val: 82, color: '#4FC3F7' },
@@ -81,9 +81,9 @@ const MILESTONES = [
   { yr: 2018.7,  v: 8,  code: 'YU',  color: '#c084fc', label: 'York University — CS' },
   { yr: 2022.2,  v: 26, code: 'BNS', color: '#ec4899', label: 'CEA - Scotiabank' }, 
   { yr: 2022.75, v: 36, code: 'TA',  color: '#fbbf24', label: 'Teaching Asst — York' },
-  { yr: 2023.6,  v: 46, code: 'CB',  color: '#38bdf8', label: 'Chatbase — Full Stack' },
+  { yr: 2023.6,  v: 46, code: 'CB',  color: '#1249a7', label: 'Chatbase — Full Stack' },
   { yr: 2024.0,  v: 54, code: 'PA',  color: '#16a34a', label: 'Proc. Analyst — Metrolinx' },
-  { yr: 2024.9,  v: 70, code: 'BI',  color: '#06b6d4', label: 'BI Analyst — Metrolinx' }, 
+  { yr: 2024.9,  v: 70, code: 'BI',  color: '#38bdf8', label: 'BI Analyst — Metrolinx' }, 
   { yr: 2025.6,  v: 86, code: 'SR',  color: '#ef4444', label: 'Sr. Specialist — Metrolinx' },
 ]
 
