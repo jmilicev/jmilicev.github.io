@@ -60,7 +60,6 @@ const BARS = [
   { name: 'DAX',         val: 94, color: '#4ade80' },
   { name: 'M Query',      val: 92, color: '#5B9BD5' },
   { name: 'Excel',       val: 90, color: '#3DBE71' },
-  { name: 'PwrAutomate',         val: 90, color: '#F05033' },
   { name: 'Azure',       val: 88, color: '#38A9F0' },
   { name: 'Python',     val: 86, color: '#9CA8FF' },
   { name: 'Databricks',  val: 84, color: '#FF5F46' },
@@ -68,7 +67,6 @@ const BARS = [
   { name: 'SharePoint',       val: 80, color: '#E8722A' },
   { name: 'JavaScript',   val: 76, color: '#7DD3FC' },
   { name: 'Node.js',     val: 76, color: '#6CC24A' },
-  { name: 'React / Vue', val: 70, color: '#61DAFB' },
 
 ]
 
