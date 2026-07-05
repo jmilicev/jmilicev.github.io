@@ -41,6 +41,19 @@
 
 .ct-heading-dim { color: var(--text-3); }
 
+.ct-line { display: block; }
+
+/* Hover-reactive letters */
+.ct-ch {
+  display: inline-block;
+  transition: transform 0.28s var(--ease-spring), color 0.28s;
+}
+
+.ct-ch:hover {
+  transform: translateY(-0.14em) skewX(-6deg);
+  color: var(--text-white);
+}
+
 .ct-text {
   font-size: 1rem;
   color: var(--text-2);
@@ -114,6 +127,27 @@
   font-family: var(--mono);
   font-size: 9px !important;
   letter-spacing: 0.12em;
+}
+
+.ct-footer-clock {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ct-clock-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px rgba(52,211,153,0.5);
+  animation: clock-pulse 2s ease infinite;
+}
+
+@keyframes clock-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.25; }
 }
 
 /* Mobile */

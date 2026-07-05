@@ -23,29 +23,31 @@
   flex-shrink: 0;
 }
 
-.exp-track-line {
-  position: sticky;
-  top: 80px;
-  width: 1px;
-  height: 60vh;
-  background: linear-gradient(to bottom, var(--border-hover), transparent);
-  overflow: hidden;
-}
-
-.exp-track-line::after {
-  content: '';
+.exp-track-base {
   position: absolute;
-  top: -100%;
-  left: 0;
+  inset: 0;
   width: 1px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.25), transparent);
-  animation: track-sweep 3s var(--ease-slow) 0.5s forwards;
+  background: var(--border);
 }
 
-@keyframes track-sweep {
-  from { top: -100%; }
-  to   { top:  200%; }
+/* Fill grows with scroll progress (height set from JS) */
+.exp-track-fill {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px;
+  height: 0%;
+  background: linear-gradient(to bottom, transparent, var(--accent));
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Glowing head riding the fill front */
+.exp-track-head {
+  position: absolute;
+  bottom: -3px; left: -2.5px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow), 0 0 30px var(--accent-glow);
 }
 
 /* ── Cards column ─────────────────────────────── */
@@ -79,6 +81,15 @@
   background: rgba(255,255,255,0.45);
   box-shadow: 0 0 8px rgba(255,255,255,0.25);
 }
+
+/* Dot ignites once the timeline fill passes it */
+.exp-card.passed .exp-dot {
+  background: var(--accent);
+  border-color: rgba(34,211,238,0.6);
+  box-shadow: 0 0 10px var(--accent-glow);
+  transform: scale(1.25);
+}
+.exp-dot { transition: background 0.4s, box-shadow 0.4s, border-color 0.4s, transform 0.4s var(--ease-spring); }
 
 /* Card body */
 .exp-card-inner {
@@ -133,10 +144,26 @@
   font-size: 8px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.32);
-  border: 1px solid var(--border-hover);
+  color: var(--green);
+  border: 1px solid rgba(52,211,153,0.35);
   padding: 2px 7px;
   border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.exp-tag-current::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: current-blink 2.4s ease infinite;
+}
+
+@keyframes current-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
 }
 
 .exp-logo-link {

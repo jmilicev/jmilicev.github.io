@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import './Experience.css'
+import MaskedHeading from '../shared/MaskedHeading'
 import metrolinxLogo from '../../share/metrolinx.jpeg'
 import chatbaseLogo  from '../../share/chatbase.png'
 import yorkLogo      from '../../share/york.png'
@@ -100,6 +101,8 @@ const jobs = [
 
 export default function Experience() {
   const sectionRef = useRef(null)
+  const trackRef   = useRef(null)
+  const fillRef    = useRef(null)
 
   useEffect(() => {
     const cards = sectionRef.current?.querySelectorAll('.exp-card')
@@ -114,17 +117,50 @@ export default function Experience() {
     return () => io.disconnect()
   }, [])
 
+  // Timeline draws itself as you scroll; dots ignite as they pass
+  useEffect(() => {
+    const track = trackRef.current
+    const fill  = fillRef.current
+    const cards = sectionRef.current?.querySelectorAll('.exp-card')
+    if (!track || !fill || !cards) return
+
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const r   = track.getBoundingClientRect()
+      const mid = window.innerHeight * 0.45
+      const p   = Math.min(1, Math.max(0, (mid - r.top) / r.height))
+      fill.style.height = `${p * 100}%`
+      cards.forEach(card => {
+        card.classList.toggle('passed', card.getBoundingClientRect().top + 34 < mid)
+      })
+    }
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update) }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
   return (
     <section className="exp-section" ref={sectionRef}>
       <div className="container">
         <div className="reveal">
           <p className="section-eyebrow"><span>01</span> Experience</p>
-          <h2 className="exp-heading">Where I've worked</h2>
+          <MaskedHeading className="exp-heading" text="Where I've worked" />
         </div>
 
         <div className="exp-timeline">
-          <div className="exp-track" aria-hidden="true">
-            <div className="exp-track-line" />
+          <div className="exp-track" ref={trackRef} aria-hidden="true">
+            <div className="exp-track-base" />
+            <div className="exp-track-fill" ref={fillRef}>
+              <div className="exp-track-head" />
+            </div>
           </div>
 
           <div className="exp-cards">
@@ -136,7 +172,7 @@ export default function Experience() {
               >
                 <div className="exp-dot" aria-hidden="true" />
 
-                <div className="exp-card-inner">
+                <div className="exp-card-inner spotlight">
                   <div className="exp-card-head">
                     <div className="exp-meta">
                       <span className="exp-period">{job.period}</span>

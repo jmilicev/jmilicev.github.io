@@ -1,4 +1,5 @@
 import './Education.css'
+import MaskedHeading from '../shared/MaskedHeading'
 import yorkLogo from '../../share/york.png'
 
 export default function Education() {
@@ -7,10 +8,10 @@ export default function Education() {
       <div className="container">
         <div className="reveal">
           <p className="section-eyebrow"><span>03</span> Education</p>
-          <h2 className="edu-heading">Academic Background</h2>
+          <MaskedHeading className="edu-heading" text="Academic Background" />
         </div>
 
-        <div className="edu-card reveal" style={{ '--delay': '90ms' }}>
+        <div className="edu-card spotlight reveal" style={{ '--delay': '90ms' }}>
           <div className="edu-left">
             <p className="edu-degree-label">Honours Bachelor of Arts</p>
             <h3 className="edu-degree">Computer<br />Science</h3>

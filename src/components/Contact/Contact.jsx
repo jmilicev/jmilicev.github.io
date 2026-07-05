@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './Contact.css'
 
 function useMagnetic(ref) {
@@ -29,11 +29,34 @@ function useMagnetic(ref) {
   }, [])
 }
 
+/* Split a string into hover-reactive letters */
+function Letters({ text }) {
+  return text.split('').map((ch, i) =>
+    ch === ' '
+      ? <span key={i} className="ct-ch ct-ch--sp">&nbsp;</span>
+      : <span key={i} className="ct-ch">{ch}</span>
+  )
+}
+
 export default function Contact() {
   const emailRef = useRef(null)
   const liRef    = useRef(null)
+  const [time, setTime] = useState('')
   useMagnetic(emailRef)
   useMagnetic(liRef)
+
+  // Live local (Toronto) clock in the footer
+  useEffect(() => {
+    const fmt = () => setTime(
+      new Date().toLocaleTimeString('en-CA', {
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: false, timeZone: 'America/Toronto',
+      })
+    )
+    fmt()
+    const id = setInterval(fmt, 1000)
+    return () => clearInterval(id)
+  }, [])
 
   return (
     <section className="ct-section">
@@ -49,8 +72,8 @@ export default function Contact() {
 
         <div className="ct-body reveal" style={{ '--delay': '80ms' }}>
           <h2 className="ct-heading">
-            Let's build something<br />
-            <span className="ct-heading-dim">meaningful together.</span>
+            <span className="ct-line"><Letters text="Let's build something" /></span>
+            <span className="ct-line ct-heading-dim"><Letters text="meaningful together." /></span>
           </h2>
 
           <p className="ct-text">
@@ -72,6 +95,10 @@ export default function Contact() {
           <span>Designed &amp; Built by Jovan Milicev</span>
           <span className="ct-footer-sep">—</span>
           <span className="ct-footer-mono">jovanmilicev.com</span>
+          <span className="ct-footer-clock ct-footer-mono">
+            <span className="ct-clock-dot" aria-hidden="true" />
+            Toronto · {time} local
+          </span>
         </footer>
       </div>
     </section>

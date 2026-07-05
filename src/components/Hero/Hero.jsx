@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './Hero.css'
+import CountUp from '../shared/CountUp'
 import github   from '../../share/github.svg'
 import linkedin from '../../share/linkedin.svg'
 import profilePic from '../../share/profile.jpeg'
@@ -20,42 +21,68 @@ function scramble(target, progress) {
 const TITLE_1 = 'Senior Reporting Specialist,'
 const TITLE_2 = 'Data Strategy Expert.'
 
+const STATS = [
+  { to: 4,   suffix: '+', label: 'years in data' },
+  { to: 5,   suffix: '',  label: 'hats worn — cs & analytics' },
+  { num: '∞',             label: 'coffees consumed' },
+  { to: 100, suffix: '%', label: 'powered by curiosity' },
+]
+
 export default function Hero() {
-  const canvasRef = useRef(null)
+  const canvasRef  = useRef(null)
+  const innerRef   = useRef(null)
   const imgWrapRef = useRef(null)
   const btnRef     = useRef(null)
   const [t1, setT1] = useState(TITLE_1)
   const [t2, setT2] = useState(TITLE_2)
 
-  /* ── Canvas animated grid ─────────────────────────────────── */
+  /* ── Canvas: grid + interactive particle constellation ────── */
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
-    let raf
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isTouch = window.matchMedia('(hover: none)').matches
     const GRID = 58
-    const N    = 20
-
-    const particles = Array.from({ length: N }, () => ({
-      x:     Math.random(),
-      y:     Math.random(),
-      vx:    (Math.random() - 0.5) * 0.00012,
-      vy:    (Math.random() - 0.5) * 0.00012,
-      r:     Math.random() * 1.4 + 0.3,
-      alpha: Math.random() * 0.3 + 0.05,
-      phase: Math.random() * Math.PI * 2,
-    }))
+    const LINK_DIST  = 110
+    const MOUSE_DIST = 160
+    let raf, W, H
+    let particles = []
+    let pulses = []
+    let nextPulse = 1200
+    let prevTs = 0
+    const mouse = { x: -9999, y: -9999 }
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
-      canvas.width  = canvas.offsetWidth  * dpr
-      canvas.height = canvas.offsetHeight * dpr
-      ctx.scale(dpr, dpr)
+      W = canvas.offsetWidth
+      H = canvas.offsetHeight
+      canvas.width  = W * dpr
+      canvas.height = H * dpr
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+      const N = isTouch ? 28 : Math.min(85, Math.round((W * H) / 17000))
+      particles = Array.from({ length: N }, () => {
+        const bvx = (Math.random() - 0.5) * 0.22
+        const bvy = (Math.random() - 0.5) * 0.22
+        return {
+          x: Math.random() * W, y: Math.random() * H,
+          vx: bvx, vy: bvy, bvx, bvy,
+          r: Math.random() * 1.3 + 0.4,
+          alpha: Math.random() * 0.3 + 0.12,
+          phase: Math.random() * Math.PI * 2,
+        }
+      })
     }
 
-    const draw = (ts) => {
-      const W = canvas.offsetWidth
-      const H = canvas.offsetHeight
+    const onMouse = (e) => {
+      const r = canvas.getBoundingClientRect()
+      mouse.x = e.clientX - r.left
+      mouse.y = e.clientY - r.top
+    }
+    const onMouseLeave = () => { mouse.x = -9999; mouse.y = -9999 }
+
+    const drawFrame = (ts) => {
       ctx.clearRect(0, 0, W, H)
 
       /* grid lines */
@@ -76,32 +103,144 @@ export default function Hero() {
         }
       }
 
-      /* horizontal scan pulse */
-      const scanPos = ((ts * 0.000055) % 1) * W
-      const sg = ctx.createLinearGradient(scanPos - 120, 0, scanPos + 120, 0)
-      sg.addColorStop(0, 'transparent')
-      sg.addColorStop(0.5, 'rgba(255,255,255,0.032)')
-      sg.addColorStop(1, 'transparent')
-      ctx.fillStyle = sg
-      ctx.fillRect(0, 0, W, H)
+      /* data pulses travelling along grid lines */
+      const dt = prevTs ? Math.min((ts - prevTs) / 1000, 0.05) : 0.016
+      prevTs = ts
 
-      /* particles */
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy; p.phase += 0.007
-        if (p.x < 0) p.x = 1; if (p.x > 1) p.x = 0
-        if (p.y < 0) p.y = 1; if (p.y > 1) p.y = 0
-        const a = p.alpha * (0.6 + 0.4 * Math.sin(p.phase))
-        ctx.fillStyle = `rgba(255,255,255,${a})`
-        ctx.beginPath(); ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2); ctx.fill()
+      if (ts > nextPulse && pulses.length < 4) {
+        nextPulse = ts + 1000 + Math.random() * 1600
+        const horiz = Math.random() < 0.5
+        const span  = horiz ? H : W
+        const lanes = Math.max(1, Math.floor(span / GRID) - 1)
+        const lane  = (1 + Math.floor(Math.random() * lanes)) * GRID
+        const dir   = Math.random() < 0.5 ? 1 : -1
+        pulses.push({
+          horiz, lane, dir,
+          p: dir > 0 ? -110 : (horiz ? W : H) + 110,
+          speed: 130 + Math.random() * 170,
+          tinted: Math.random() < 0.55,
+        })
+      }
+
+      pulses = pulses.filter(pu => {
+        pu.p += pu.dir * pu.speed * dt
+        const limit = pu.horiz ? W : H
+        if (pu.p < -160 || pu.p > limit + 160) return false
+
+        const TRAIL = 95
+        const tail = pu.p - pu.dir * TRAIL
+        const [r, g, b] = pu.tinted ? [74, 222, 128] : [255, 255, 255]
+        const grad = pu.horiz
+          ? ctx.createLinearGradient(tail, pu.lane, pu.p, pu.lane)
+          : ctx.createLinearGradient(pu.lane, tail, pu.lane, pu.p)
+        grad.addColorStop(0, `rgba(${r},${g},${b},0)`)
+        grad.addColorStop(1, `rgba(${r},${g},${b},${pu.tinted ? 0.4 : 0.3})`)
+        ctx.strokeStyle = grad
+        ctx.lineWidth = 1
+        ctx.beginPath()
+        if (pu.horiz) { ctx.moveTo(tail, pu.lane); ctx.lineTo(pu.p, pu.lane) }
+        else          { ctx.moveTo(pu.lane, tail); ctx.lineTo(pu.lane, pu.p) }
+        ctx.stroke()
+
+        /* glowing head */
+        ctx.fillStyle = `rgba(${r},${g},${b},${pu.tinted ? 0.85 : 0.6})`
+        ctx.beginPath()
+        if (pu.horiz) ctx.arc(pu.p, pu.lane, 1.4, 0, Math.PI * 2)
+        else          ctx.arc(pu.lane, pu.p, 1.4, 0, Math.PI * 2)
+        ctx.fill()
+        return true
       })
 
-      raf = requestAnimationFrame(draw)
+      /* particles: drift + mouse repulsion */
+      particles.forEach(p => {
+        const dx = p.x - mouse.x
+        const dy = p.y - mouse.y
+        const d2 = dx * dx + dy * dy
+        if (d2 < MOUSE_DIST * MOUSE_DIST) {
+          const d = Math.sqrt(d2) || 1
+          const f = ((MOUSE_DIST - d) / MOUSE_DIST) * 0.55
+          p.vx += (dx / d) * f
+          p.vy += (dy / d) * f
+        }
+        /* ease back toward base drift */
+        p.vx += (p.bvx - p.vx) * 0.02
+        p.vy += (p.bvy - p.vy) * 0.02
+        p.x += p.vx; p.y += p.vy; p.phase += 0.008
+
+        if (p.x < 0) p.x += W; if (p.x > W) p.x -= W
+        if (p.y < 0) p.y += H; if (p.y > H) p.y -= H
+      })
+
+      /* connection lines between nearby particles */
+      for (let i = 0; i < particles.length; i++) {
+        const a = particles[i]
+        for (let j = i + 1; j < particles.length; j++) {
+          const b = particles[j]
+          const dx = a.x - b.x, dy = a.y - b.y
+          const d2 = dx * dx + dy * dy
+          if (d2 < LINK_DIST * LINK_DIST) {
+            const alpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.13
+            ctx.strokeStyle = `rgba(255,255,255,${alpha})`
+            ctx.lineWidth = 0.6
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke()
+          }
+        }
+
+        /* line from cursor to nearby particles (accent-tinted) */
+        const mdx = a.x - mouse.x, mdy = a.y - mouse.y
+        const md2 = mdx * mdx + mdy * mdy
+        if (md2 < MOUSE_DIST * MOUSE_DIST) {
+          const alpha = (1 - Math.sqrt(md2) / MOUSE_DIST) * 0.3
+          ctx.strokeStyle = `rgba(74,222,128,${alpha})`
+          ctx.lineWidth = 0.6
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke()
+        }
+
+        const alpha = a.alpha * (0.6 + 0.4 * Math.sin(a.phase))
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`
+        ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); ctx.fill()
+      }
     }
+
+    const loop = (ts) => { drawFrame(ts); raf = requestAnimationFrame(loop) }
 
     resize()
     window.addEventListener('resize', resize)
-    raf = requestAnimationFrame(draw)
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize) }
+
+    if (reduced) {
+      drawFrame(0)                      /* single static frame */
+    } else {
+      raf = requestAnimationFrame(loop)
+      if (!isTouch) {
+        window.addEventListener('mousemove', onMouse, { passive: true })
+        document.addEventListener('mouseleave', onMouseLeave)
+      }
+    }
+
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('resize', resize)
+      window.removeEventListener('mousemove', onMouse)
+      document.removeEventListener('mouseleave', onMouseLeave)
+    }
+  }, [])
+
+  /* ── Parallax fade-out as the hero scrolls away ───────────── */
+  useEffect(() => {
+    const el = innerRef.current
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const y = window.scrollY
+      const vh = window.innerHeight
+      if (y > vh) return
+      el.style.transform = `translateY(${y * 0.18}px)`
+      el.style.opacity   = String(Math.max(0, 1 - y / (vh * 0.85)))
+    }
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update) }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => { window.removeEventListener('scroll', onScroll); cancelAnimationFrame(raf) }
   }, [])
 
   /* ── Text scramble on mount (desktop only — avoids mobile reflow) ── */
@@ -110,7 +249,7 @@ export default function Hero() {
       window.matchMedia('(hover: none)').matches ||
       window.matchMedia('(pointer: coarse)').matches ||
       navigator.maxTouchPoints > 0
-    if (isTouch) return
+    if (isTouch || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const DURATION = 1100
     const start = Date.now()
 
@@ -190,7 +329,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="container hero-inner">
+      <div className="container hero-inner" ref={innerRef}>
         {/* Text */}
         <div className="hero-text">
           <h1 className="hero-title">
@@ -226,6 +365,20 @@ export default function Hero() {
               </a>
             </div>
           </div>
+
+          {/* Animated stat counters */}
+          <div className="hero-stats">
+            {STATS.map((s, i) => (
+              <div key={s.label} className="hero-stat">
+                <span className="hero-stat-num">
+                  {s.num !== undefined
+                    ? s.num
+                    : <CountUp to={s.to} suffix={s.suffix} duration={1600} delay={700 + i * 120} />}
+                </span>
+                <span className="hero-stat-key">{s.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Profile image */}
@@ -242,7 +395,6 @@ export default function Hero() {
           <div className="hero-bracket hero-bracket--bl" aria-hidden="true" />
           <div className="hero-bracket hero-bracket--br" aria-hidden="true" />
           <div className="hero-ring" aria-hidden="true" />
-          <div className="hero-ring hero-ring--2" aria-hidden="true" />
         </div>
       </div>
 

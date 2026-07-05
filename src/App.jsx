@@ -5,6 +5,7 @@ import Experience from './components/Experience/Experience'
 import Skills from './components/Skills/Skills'
 import Education from './components/Education/Education'
 import Contact from './components/Contact/Contact'
+import CommandPalette from './components/CommandPalette/CommandPalette'
 import './index.css'
 
 export default function App() {
@@ -55,6 +56,26 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Spotlight glow that follows the mouse across cards
+  useEffect(() => {
+    if (window.matchMedia('(hover: none)').matches) return
+    let raf = 0
+    const onMove = (e) => {
+      if (raf) return
+      raf = requestAnimationFrame(() => {
+        raf = 0
+        document.querySelectorAll('.spotlight').forEach(el => {
+          const r = el.getBoundingClientRect()
+          if (e.clientY < r.top - 300 || e.clientY > r.bottom + 300) return
+          el.style.setProperty('--mx', `${e.clientX - r.left}px`)
+          el.style.setProperty('--my', `${e.clientY - r.top}px`)
+        })
+      })
+    }
+    window.addEventListener('mousemove', onMove, { passive: true })
+    return () => { window.removeEventListener('mousemove', onMove); cancelAnimationFrame(raf) }
+  }, [])
+
   // Global scroll reveal
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -74,6 +95,7 @@ export default function App() {
       <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
       <div ref={dotRef}  className="cursor-dot"  aria-hidden="true" />
 
+      <CommandPalette />
       <Navbar />
       <main>
         <section id="home">      <Hero />       </section>
